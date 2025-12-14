@@ -26,8 +26,12 @@
         wp_body_open();
     } ?>
     <header id="main-header" role="banner" aria-label="<?php echo esc_attr__('Main header', 'stories'); ?>">
+        <div class="glass-backdrop"></div>
         <div class="block">
             <div class="content">
+                <button id="menu-mobile__button" class="menu-mobile__button btn-pagination small-pagination" onclick="toggleMenuMobile()">
+                    <span class="bar"></span>
+                </button>
                 <div class="site-brand">
                     <?php
                     if (!has_custom_logo()) {
@@ -38,6 +42,11 @@
                     }
                     ?>
                 </div>
+                <button id="search-mobile__button" class="search-mobile__button btn-pagination small-pagination" onclick="openCustomSearchform()" aria-label="Open search">
+                    <div class="icon--wrapper">
+                        <div class="bar"></div>
+                    </div>
+                </button>
             </div>
         </div>
     </header>
