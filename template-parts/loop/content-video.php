@@ -12,10 +12,10 @@
     <div class="post-body">
         <header class="post-body__header" style="aspect-ratio: 1 / 1.13949;">
             <div class="category post--tags">
-                <?= '<a href="' . esc_url(get_post_format_link('video')) . '" class="post-tag small">' . stories_get_icon('video') . esc_html(__('Video', 'core')) . '</a>';
+                <?= '<a href="' . esc_url(get_post_format_link('video')) . '" class="post-tag small glass-backdrop">' . stories_get_icon('video') . esc_html(__('Video', 'core')) . '</a>';
                 ?>
             </div>
-            <a class="post--permalink btn-pagination small-pagination" href="<?php the_permalink(); ?>"
+            <a class="post--permalink btn-pagination small-pagination glass-backdrop" href="<?php the_permalink(); ?>"
                 aria-label="Ver el video de <?= esc_attr($post_title); ?>">
                 <?= stories_get_icon('permalink'); ?>
             </a>

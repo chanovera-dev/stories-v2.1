@@ -12,7 +12,7 @@
     <div class="post-body">
         <header class="post-body__header" style="aspect-ratio: 1 / 1.13949;">
             <div class="category post--tags">
-                <?= '<a href="' . esc_url(get_post_format_link('image')) . '" class="post-tag small">' . stories_get_icon('image') . esc_html(__('Dibujo', 'core')) . '</a>'; ?>
+                <?= '<a href="' . esc_url(get_post_format_link('image')) . '" class="post-tag small glass-backdrop">' . stories_get_icon('image') . esc_html(__('Dibujo', 'core')) . '</a>'; ?>
             </div>
             <?php
             if (has_post_thumbnail()) {
@@ -20,7 +20,7 @@
             }
             ?>
             <?php $post_title = get_the_title(); ?>
-            <a class="post--permalink btn-pagination small-pagination" href="<?php the_permalink(); ?>"
+            <a class="post--permalink btn-pagination small-pagination glass-backdrop" href="<?php the_permalink(); ?>"
                 aria-label="Ver la imagen de <?= esc_attr($post_title); ?>">
                 <?= stories_get_icon('permalink'); ?>
             </a>

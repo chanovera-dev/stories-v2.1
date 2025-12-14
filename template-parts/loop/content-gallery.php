@@ -12,10 +12,10 @@
     <div class="post-body">
         <header class="post-body__header" style="aspect-ratio: 1 / 1.13949;">
             <div class="category post--tags">
-                <?= '<a href="' . esc_url(get_post_format_link('gallery')) . '" class="post-tag small">' . stories_get_icon('gallery') . esc_html(__('Galería', 'stories')) . '</a>'; ?>
+                <?= '<a href="' . esc_url(get_post_format_link('gallery')) . '" class="post-tag small glass-backdrop">' . stories_get_icon('gallery') . esc_html(__('Galería', 'stories')) . '</a>'; ?>
             </div>
             <?php $post_title = get_the_title(); ?>
-            <a class="post--permalink btn-pagination small-pagination" href="<?php the_permalink(); ?>"
+            <a class="post--permalink btn-pagination small-pagination glass-backdrop" href="<?php the_permalink(); ?>"
                 aria-label="Ver la galería de <?= esc_attr($post_title); ?>">
                 <?= stories_get_icon('permalink'); ?>
             </a>

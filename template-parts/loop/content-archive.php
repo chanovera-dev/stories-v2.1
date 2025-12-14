@@ -21,7 +21,7 @@
                         $cat_link = esc_url(get_category_link($category->term_id));
                         $cat_icon = stories_get_icon('category');
 
-                        echo "<a href='{$cat_link}' class='post-tag small'>{$cat_icon}{$cat_name}</a> ";
+                        echo "<a href='{$cat_link}' class='post-tag small glass-backdrop'>{$cat_icon}{$cat_name}</a> ";
                     }
                 }
                 ?>

@@ -74,8 +74,6 @@ body {
                 top: 1rem;
                 right: 1rem;
                 z-index: 1;
-                background-color: light-dark(var(--wp--preset--color--base-alpha-50), var(--wp--preset--color--base-alpha-50-night));
-                backdrop-filter: blur(.5rem);
 
                 &:has(~ .gallery-wrapper) {
                     top: 1.5rem;
@@ -105,9 +103,6 @@ body {
                 }
 
                 & .post-tag {
-                    background-color: light-dark(var(--wp--preset--color--tertiary-alpha-50), var(--wp--preset--color--tertiary-alpha-50-night));
-                    backdrop-filter: blur(.5rem);
-
                     &:hover {
                         background-color: light-dark(var(--wp--preset--color--secondary-alpha-50), var(--wp--preset--color--secondary-alpha-50-night));
                     }
