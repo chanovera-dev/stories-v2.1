@@ -1,9 +1,9 @@
 /*
 Theme Name: Stories V2.1
-Theme URI: https://github.com/chanovera-dev/stories-v2
+Theme URI: https://github.com/chanovera-dev/stories-v2.1
 Author: Chano Vera
 Author URI: https://chano.dev
-Description: 
+Description: Stories V2.1 es un tema de narrativa inmersiva y blogging diseñado para escritores. Cuenta con un amplio conjunto de formatos de entrada (Estándar, Minientrada, Dibujo, Video, Cita, Artículo externo, Galería), tipografía fluida y una paleta de colores moderna preparada para el modo oscuro. Construido con capacidades híbridas, combina el poder de los bloques de edición completa del sitio con la estabilidad de las plantillas clásicas. Incluye widgets personalizados, múltiples áreas de barra lateral y un diseño responsive inspirado en el glassmorphism.
 Requires at least: 6.7
 Tested up to: 6.9
 Requires PHP: 8.0
@@ -11,7 +11,7 @@ Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: stories
-Tags: 
+Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado, menu-personalizado, estilo-de-editor, imagenes-destacadas, widgets-pie-de-pagina, plantilla-ancho-completo, microformatos, formatos-de-entrada, barra-lateral-derecha, entrada-fija, opciones-de-tema, listo-para-traduccion, listo-para-accesibilidad, patrones-de-bloques, bloques-anchos
 */
 
 #main-header {
