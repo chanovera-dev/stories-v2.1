@@ -99,17 +99,17 @@
 					"slug": "tertiary-alpha-50-night"
 				},
 				{
-					"color": "#c2e07e",
+					"color": "#B2D6B5",
 					"name": "Bullet",
 					"slug": "bullet"
 				},
 				{
-					"color": "#31391D",
+					"color": "#233325",
 					"name": "Bullet Night",
 					"slug": "bullet-night"
 				},
 				{
-					"color": "#8e9c58",
+					"color": "#87AB89",
 					"name": "Bullet Active",
 					"slug": "bullet-active"
 				},
@@ -169,12 +169,12 @@
 					"slug": "focus-alpha-50"
 				},
 				{
-					"color": "#b7c971",
+					"color": "#99BD9B",
 					"name": "Button",
 					"slug": "button"
 				},
 				{
-					"color": "#3d4325",
+					"color": "#314233",
 					"name": "Button Night",
 					"slug": "button-night"
 				},
