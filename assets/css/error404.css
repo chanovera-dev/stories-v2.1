@@ -1,0 +1,23 @@
+.site-main {
+    & .block.not-found__wrapper {
+        display: grid;
+        place-content: center;
+        height: 100%;
+
+        & .content {
+            padding: 3rem 0;
+            text-align: center;
+            width: 100%;
+
+            &>*:not(:last-child) {
+                margin-bottom: 1.5rem;
+            }
+
+            & .not-found__image {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+            }
+        }
+    }
+}

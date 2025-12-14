@@ -1,0 +1,16 @@
+.site-main {
+    & .block.posts--body {
+        & .content {
+            padding: 3rem 0;
+            position: relative;
+            z-index: 1;
+
+            & .loop {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(17.5rem, 1fr));
+                align-content: baseline;
+                gap: 1rem;
+            }
+        }
+    }
+}

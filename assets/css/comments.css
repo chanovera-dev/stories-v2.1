@@ -1,0 +1,129 @@
+.site-main {
+    & .block {
+        & .content-comments {
+            padding: 3rem 0;
+            width: min(100% - 2.5rem, 40.313rem);
+        }
+    }
+}
+
+/*COMMENTS LIST*/
+#comments {
+    position: relative;
+    margin-bottom: 28px;
+    align-items: center;
+}
+
+.commentlist {
+    padding-left: 0;
+    list-style: none;
+    margin-bottom: 1.25rem;
+}
+
+.commentlist ul {
+    list-style: none;
+}
+
+.commentlist li.comment:not(:last-child) .comment-body {
+    border-bottom: 1px solid var(--wp--preset--color--accent-6);
+}
+
+.commentlist li.comment .comment-body {
+    position: relative;
+    padding: 25px 0 45px;
+}
+
+.commentlist li.comment .comment-body .comment-meta .avatar {
+    display: none;
+}
+
+.commentlist li.comment .comment-body .comment-meta .comment-author .fn {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.commentlist li.comment .comment-body .says {
+    display: none;
+}
+
+.commentlist li.comment .comment-body .reply {
+    position: absolute;
+    top: 25px;
+    right: 0;
+    font-size: 13px;
+    font-weight: 500;
+    transition: color .3s ease;
+}
+
+.commentlist li.comment .comment-body .reply:hover {
+    color: var(--link);
+}
+
+.commentlist li.comment .comment-body .comment-metadata a {
+    position: absolute;
+    bottom: 20px;
+    font-size: 13px;
+    opacity: .5;
+    transition: opacity .3s ease, color .3s ease;
+}
+
+.commentlist li.comment .comment-body .comment-metadata a:hover {
+    opacity: 1;
+    color: var(--link);
+}
+
+.commentlist li.comment .comment-body .comment-metadata .comment-edit-link {
+    right: 0;
+}
+
+/* COMMENTS FORM */
+#reply-title {
+    font-size: var(--wp--preset--font-size--x-large);
+    margin-bottom: 1.2rem;
+}
+
+#commentform :is(.comment-notes, .comment-form-cookies-consent, .form-submit, .comment-form-comment, .logged-in-as) {
+    grid-column: 1 / -1;
+}
+
+#commentform .comment-form-cookies-consent {
+    position: relative;
+}
+
+#commentform {
+    display: grid;
+    gap: 1.2rem .6rem;
+}
+
+@media(width > 48rem) {
+    .commentlist li.comment .comment-body {
+        padding-left: 90px;
+    }
+
+    .commentlist li.comment .comment-body .comment-meta .avatar {
+        background-color: light-dark(var(--wp--preset--color--secondary), var(--secondary-dark));
+        display: inherit;
+        position: absolute;
+        left: 0;
+        top: 25px;
+    }
+
+    #commentform {
+        grid-template-columns: repeat(3, 1fr);
+
+        & .comment-form-author {
+            grid-column: 1 / 2;
+            grid-row: 2 / 3;
+        }
+
+        & .comment-form-email {
+            grid-column: 2 / 3;
+            grid-row: 2 / 3;
+        }
+
+        & .comment-form-url {
+            grid-column: 3 / 4;
+            grid-row: 2 / 3;
+        }
+    }
+}

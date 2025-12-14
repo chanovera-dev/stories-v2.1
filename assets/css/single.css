@@ -1,0 +1,62 @@
+.is-layout-constrained {
+    & .post--tags {
+        margin-top: 3rem;
+    }
+
+    & .post--author {
+        & .author-name {
+            margin-bottom: .6rem;
+        }
+
+        & .avatar {
+            position: relative;
+            top: 0.313rem;
+            float: left;
+            shape-outside: margin-box;
+            margin: 0 1.25rem 0 0;
+        }
+
+        & .author-description {
+            font-size: var(--wp--preset--font-size--small);
+        }
+    }
+}
+
+.post-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2.5rem;
+    width: var(--max-width--content);
+    margin-inline: auto;
+    padding-bottom: 3rem;
+
+    & :is(.left, .right) {
+        & a {
+            & .pagination-indicator {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                transition: color .3s ease;
+            }
+
+            &:hover {
+                & .pagination-indicator {
+                    color: var(--wp--preset--color--primary);
+                }
+            }
+
+            &:focus-visible {
+                outline: none;
+
+                & .pagination-indicator {
+                    color: var(--wp--preset--color--focus);
+                }
+            }
+        }
+    }
+
+    & .right {
+        text-align: right;
+    }
+}

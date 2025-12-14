@@ -1,0 +1,118 @@
+.is-layout-constrained {
+    figure.wp-block-gallery {
+        opacity: 0;
+    }
+
+    & .post-gallery-wrapper {
+        position: relative;
+        overflow: hidden;
+        background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
+        opacity: 0;
+        transform: translateY(60px);
+        animation: post-gallery-entrance .3s ease forwards;
+        box-shadow: inset 0 0 7px light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+
+        & .total-images {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .5rem .8rem;
+            z-index: 1;
+            background-color: light-dark(var(--wp--preset--color--secondary-alpha-50), var(--wp--preset--color--secondary-alpha-50-night));
+            backdrop-filter: blur(.5rem);
+
+            &:hover {
+                cursor: inherit;
+            }
+        }
+
+        & .post-gallery {
+            display: flex;
+
+            & .post-gallery-slide {
+                flex-shrink: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: .5rem;
+
+                & img {
+                    width: 100%;
+                    aspect-ratio: 3 / 2;
+                    object-fit: cover;
+                    display: block;
+                    box-shadow: 0 0 7px var(--wp--preset--color--main-alpha-10);
+                }
+            }
+        }
+
+        & .post-gallery-thumbs-container {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            justify-content: space-between;
+            overflow: hidden;
+            padding: .5rem;
+            padding-top: 0;
+
+            & .post-gallery-thumbs {
+                list-style: none;
+                margin: 0;
+                padding: .5rem 0;
+                opacity: 0;
+                animation: post-gallery-entrance .3s ease .3s forwards;
+
+                & .post-gallery-thumb {
+                    border: 1px solid transparent;
+                    transition: border-color .3s ease, box-shadow .3s ease;
+
+                    &.active {
+                        & img {
+                            border-color: var(--wp--preset--color--bullet-active);
+                            box-shadow: 0 0 0 1px var(--wp--preset--color--bullet-active),
+                                0 0 0 .2rem var(--wp--preset--color--primary-alpha-50);
+                        }
+                    }
+
+                    & img {
+                        width: 100%;
+                        height: calc(46px - .4rem);
+                        object-fit: cover;
+                        opacity: .5;
+                        transition: opacity .3s ease;
+                    }
+
+                    &.active {
+                        & img {
+                            opacity: 1;
+                        }
+                    }
+
+                    &:not(.active):hover {
+                        & img {
+                            border-color: light-dark(var(--wp--preset--color--main), var(--wp--preset--color--main));
+                            box-shadow: 0 0 0 1px var(--wp--preset--color--main),
+                                0 0 0 .2rem var(--main-light);
+                            opacity: .75;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes post-gallery-entrance {
+    from {
+        opacity: 0;
+        transform: translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

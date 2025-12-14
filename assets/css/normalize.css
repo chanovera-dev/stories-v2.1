@@ -1,0 +1,17 @@
+*,
+::before,
+::after {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+img {
+    display: block;
+}
+
+a:not(.page-numbers.prev, .page-numbers.next, .post-tag, .post--permalink) {
+    &:focus {
+        outline: none;
+        color: var(--wp--preset--color--focus);
+    }
+}

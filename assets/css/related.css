@@ -1,0 +1,30 @@
+section.block.posts--body.container--related-posts {
+    background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
+    padding: 3rem 0;
+    display: grid;
+    gap: 2rem;
+
+    & .content {
+        &.related-posts--title {
+            & h2.title-section {
+                text-align: center;
+            }
+        }
+
+        &.slideshow-wrapper {
+            width: var(--max-width--content);
+
+            & .slideshow {
+                & .post:not(:has(header.block.entry-header)) {
+                    & .post-body {
+                        & .post-body__footer {
+                            &::after {
+                                background: linear-gradient(to left, light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night)) 0%, transparent 100%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
