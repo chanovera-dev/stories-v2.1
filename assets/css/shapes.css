@@ -226,6 +226,12 @@ body {
 }
 
 .btn-pagination {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    position: relative;
     display: grid;
     place-content: center;
     width: 4rem;
@@ -262,7 +268,7 @@ body {
     }
 
     &:active {
-        transform: translateY(.063rem);
+        transform: scale(.8);
     }
 
     &:focus-visible {
