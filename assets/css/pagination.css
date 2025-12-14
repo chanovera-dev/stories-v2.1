@@ -50,6 +50,7 @@
             &:focus-visible {
                 outline: none;
                 background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
+                color: var(--wp--preset--color--focus);
 
                 &::before {
                     position: absolute;
@@ -61,6 +62,12 @@
                     height: .25rem;
                     background-color: var(--wp--preset--color--focus);
                     animation: mark-pagination .3s ease forwards;
+                }
+
+                &:hover {
+                    &::before {
+                        background-color: var(--wp--preset--color--focus);
+                    }
                 }
             }
         }
