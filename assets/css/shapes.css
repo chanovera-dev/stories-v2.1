@@ -417,12 +417,6 @@ body {
 }
 
 .glass-backdrop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
     background-color: light-dark(var(--wp--preset--color--base-alpha-50), var(--wp--preset--color--base-alpha-50-night));
     backdrop-filter: blur(1rem);
 }
