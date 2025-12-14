@@ -11,7 +11,7 @@ function initGallery(wrapper) {
 
     if (!gallery || originalSlides.length === 0 || !bulletsWrapper) return
 
-    wrapper.style.height = "100%"
+    wrapper.style.height = "calc(100% - .5rem)"
     wrapper.style.overflow = "hidden"
     wrapper.style.display = "grid"
     wrapper.style.gridTemplateRows = "1fr auto"

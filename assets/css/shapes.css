@@ -37,6 +37,7 @@ body {
         }
 
         & .post-body__header {
+            overflow: hidden;
             aspect-ratio: 3 / 2;
             position: relative;
             padding: .5rem;
@@ -44,17 +45,23 @@ body {
 
             &>img {
                 width: 100%;
-                height: 100%;
+                height: calc(100% - .5rem);
                 object-fit: cover;
             }
 
-            & .post-video-wrapper video {
-                position: absolute;
-                top: .5rem;
-                left: .5rem;
-                width: calc(100% - 1rem);
+            & .post-video-wrapper {
+                position: relative;
+                width: 100%;
                 height: calc(100% - .5rem);
-                object-fit: cover;
+
+                & video {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
             }
 
             & .gallery-wrapper {
