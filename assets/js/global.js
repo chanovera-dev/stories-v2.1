@@ -1,4 +1,4 @@
-const body = document.body;
+const body = document.body
 
 const ua = navigator.userAgent.toLowerCase()
 const isChromium =
@@ -72,7 +72,7 @@ document.addEventListener('keydown', function (event) {
             closeCustomSearchform()
         }
     }
-});
+})
 
 function toggleCustomSearchform() {
     const button = document.querySelector('.search-mobile__button')

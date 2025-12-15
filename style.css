@@ -33,13 +33,127 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
         & .content {
             position: relative;
             padding: 1.25rem 0;
-            display: grid;
-            grid-template-columns: 1fr auto 1fr;
+            display: flex;
             align-items: center;
             transition: padding .3s ease;
 
+            & .site-brand {
+                grid-column: 2 / 3;
+
+                & .custom-logo {
+                    width: 46px;
+                    height: auto;
+                }
+            }
+
+            & .main-navigation {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                z-index: 5;
+                border: 1px solid light-dark(var(--wp--preset--color--accent-6), var(--wp--preset--color--accent-6));
+                box-shadow: rgba(17, 12, 46, 0.3) 0px 24px 50px 0px;
+
+                & .glass-backdrop {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 0;
+                }
+
+                &>ul {
+                    position: relative;
+                    padding-left: 0;
+                    list-style: none;
+                    padding: .4rem;
+                    border: 1px solid light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
+
+                    & li {
+                        &>a {
+                            display: flex;
+                            align-items: center;
+                            padding: .5rem;
+                            line-height: 1;
+                            transition: background-color .3s ease;
+
+                            &:hover {
+                                background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+                            }
+                        }
+
+                        & .wrapper-for-title {
+                            padding: .5rem;
+                            padding-right: 0;
+                            line-height: 1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-between;
+                            gap: .5rem;
+
+                            & a {
+                                transition: color .3s ease;
+
+                                &:hover {
+                                    color: light-dark(var(--wp--preset--color--button), var(--wp--preset--color--primary-night));
+                                }
+                            }
+
+                            & .button-for-submenu {
+                                width: 17px;
+                                height: 17px;
+                                display: grid;
+                                place-content: center;
+                                background-color: transparent;
+                                border: none;
+                                cursor: pointer;
+                                transition: background-color .3s ease;
+
+                                &:hover {
+                                    background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+                                }
+                            }
+                        }
+
+                        &>ul {
+                            padding: .4rem;
+                            background-color: light-dark(var(--wp--preset--color--secondary-alpha-50), var(--wp--preset--color--secondary-alpha-50-night));
+                            list-style: none;
+                            box-shadow: inset 0 0 7px light-dark(var(--wp--preset--color--primary-dark-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+
+                            & li {
+                                &>a {
+                                    padding-left: 1.5rem;
+                                    font-size: var(--wp--preset--font-size--small);
+                                }
+
+                                & .wrapper-for-title {
+                                    padding-left: 1.5rem;
+
+                                    & a {
+                                        font-size: var(--wp--preset--font-size--small);
+                                    }
+                                }
+
+                                & ul {
+                                    background-color: transparent;
+                                    box-shadow: none;
+                                    padding: .4rem 0;
+
+                                    & li {
+                                        & a {
+                                            padding-left: 3rem;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
             & .menu-mobile__button {
-                grid-column: 1 / 2;
                 background-color: transparent;
                 position: relative;
                 z-index: 3;
@@ -110,21 +224,12 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 }
             }
 
-            & .site-brand {
-                grid-column: 2 / 3;
-
-                & .custom-logo {
-                    width: 46px;
-                    height: auto;
-                }
-            }
-
             .search-mobile__button {
                 background-color: transparent;
-                grid-column: 3 / 4;
                 margin-left: auto;
                 position: relative;
-                z-index: 3;
+                z-index: 5;
+                backdrop-filter: blur(2rem);
 
                 & .icon--wrapper {
                     position: relative;
@@ -176,6 +281,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 }
 
                 &.active {
+                    transform: translateX(48px);
+
                     & .icon--wrapper {
                         &::before {
                             max-width: 16px;

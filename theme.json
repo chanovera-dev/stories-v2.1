@@ -44,6 +44,11 @@
 					"slug": "primary"
 				},
 				{
+					"color": "#778f8f80",
+					"name": "Primary Dark Alpha 50",
+					"slug": "primary-dark-alpha-50"
+				},
+				{
 					"color": "#9dbab980",
 					"name": "Primary Alpha 50",
 					"slug": "primary-alpha-50"

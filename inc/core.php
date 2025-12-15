@@ -539,6 +539,7 @@ function stories_get_icon($type)
         'archive' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-calendar4-week" viewBox="0 0 16 16"><path d="M3.5 0a.5.5 0 0 1 .5.5V1h8V.5a.5.5 0 0 1 1 0V1h1a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2h1V.5a.5.5 0 0 1 .5-.5M2 2a1 1 0 0 0-1 1v1h14V3a1 1 0 0 0-1-1zm13 3H1v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1z"/><path d="M11 7.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-2 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5zm-3 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5z"/></svg>',
         'tag' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-tag" viewBox="0 0 16 16"><path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0"/><path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1m0 5.586 7 7L13.586 9l-7-7H2z"/></svg>',
         'comment' => '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chat-right-text" viewBox="0 0 16 16"><path d="M2 1a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h9.586a2 2 0 0 1 1.414.586l2 2V2a1 1 0 0 0-1-1zm12-1a2 2 0 0 1 2 2v12.793a.5.5 0 0 1-.854.353l-2.853-2.853a1 1 0 0 0-.707-.293H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2z"/><path d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5M3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6m0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"/></svg>',
+        'chevron-down' => '<svg width="13" height="13" fill="currentColor" class="bi bi-chevron-down" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"></path></svg>',
     ];
 
     return $icons[$type] ?? '';
@@ -588,6 +589,49 @@ add_action('customize_register', 'stories_customize_register');
  * BLOCK FILTERS & CUSTOM RENDER
  * =========================================================================
  */
+
+/**
+ * Enhances menu structure with custom elements
+ * 
+ * Adds submenu indicators and custom markup for mobile and primary
+ * navigation menus. Includes SVG icons for visual hierarchy.
+ *
+ * @param string $item_output The menu item's HTML
+ * @param object $item Menu item data object
+ * @param int $depth Depth of menu item
+ * @param object $args Menu arguments
+ * @return string Modified menu item HTML
+ */
+function custom_menu($item_output, $item, $depth, $args) {
+    $allowed_locations = ['primary'];
+
+    if (!isset($args->theme_location) || !in_array($args->theme_location, $allowed_locations)) {
+        return $item_output;
+    }
+
+    global $submenu_items_by_parent;
+    static $checked_menus = [];
+
+    if (!empty($args->menu) && !in_array($args->menu->term_id, $checked_menus)) {
+        $menu_items = wp_get_nav_menu_items($args->menu->term_id);
+        foreach ($menu_items as $menu_item) {
+            $submenu_items_by_parent[$menu_item->menu_item_parent][] = $menu_item;
+        }
+        $checked_menus[] = $args->menu->term_id;
+    }
+
+    $has_children = !empty($submenu_items_by_parent[$item->ID]);
+
+    if ($has_children) {
+        $text = '<a href="' . esc_url($item->url) . '">' . esc_html($item->title) . '</a>';
+        $svg_icon = stories_get_icon('chevron-down');
+
+        return '<div class="wrapper-for-title">' . $text . '<button class="button-for-submenu">' . $svg_icon . '</button></div>';
+    }
+
+    return $item_output;
+}
+add_filter('walker_nav_menu_start_el', 'custom_menu', 10, 4);
 
 /**
  * Renders a custom gallery block with slider functionality.
