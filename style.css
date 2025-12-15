@@ -18,8 +18,9 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: box-shadow .3s ease;
 
-    & .glass-backdrop {
+    &>.glass-backdrop {
         position: absolute;
         top: 0;
         left: 0;
@@ -35,9 +36,11 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
             display: grid;
             grid-template-columns: 1fr auto 1fr;
             align-items: center;
+            transition: padding .3s ease;
 
             & .menu-mobile__button {
                 grid-column: 1 / 2;
+                background-color: transparent;
 
                 & .bar {
                     position: relative;
@@ -93,18 +96,23 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                         opacity: 0;
                     }
                 }
+
+                &:hover {
+                    background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+                }
             }
 
             & .site-brand {
                 grid-column: 2 / 3;
 
                 & .custom-logo {
-                    width: 80px;
+                    width: 46px;
                     height: auto;
                 }
             }
 
             .search-mobile__button {
+                background-color: transparent;
                 grid-column: 3 / 4;
                 margin-left: auto;
 
@@ -190,6 +198,22 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                         }
                     }
                 }
+
+                &:hover {
+                    background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+                }
+            }
+        }
+    }
+}
+
+:is(.scroll-up, .scroll-down) {
+    #main-header {
+        box-shadow: rgba(17, 12, 46, 0.3) 0px 24px 50px 0px;
+
+        & .block {
+            & .content {
+                padding: 0.5rem 0;
             }
         }
     }
