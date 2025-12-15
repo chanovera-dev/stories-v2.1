@@ -483,6 +483,7 @@ select,
     border-radius: .5rem;
 }
 
+& #searchsubmit,
 .stories-block-search__button {
     border-radius: 6px;
 }
@@ -544,6 +545,7 @@ body.is-chromium {
         corner-shape: squircle;
     }
 
+    & #searchsubmit,
     .stories-block-search__button {
         border-radius: 18px;
         corner-shape: squircle;

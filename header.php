@@ -42,11 +42,22 @@
                     }
                     ?>
                 </div>
-                <button id="search-mobile__button" class="search-mobile__button btn-pagination small-pagination" onclick="openCustomSearchform()" aria-label="Open search">
+                <button id="search-mobile__button" class="search-mobile__button btn-pagination small-pagination" onclick="toggleCustomSearchform()" aria-label="Open search">
                     <div class="icon--wrapper">
                         <div class="bar"></div>
                     </div>
                 </button>
+                <form role="search" method="get" id="custom-searchform" class="" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+                    <div class="section">
+                        <label class="screen-reader-text" for="s"><?php esc_html__('Buscar', 'stories'); ?></label>
+                        <input class="wp-block-search__input" type="text" value="" name="s" id="s" placeholder="<?php esc_html_e('Buscar', 'stories'); ?>">
+                        <div class="buttons-container">
+                            <button type="submit" id="searchsubmit" value="Search" aria-label="Activate the search">
+                                <?= stories_get_icon('search'); ?>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </header>

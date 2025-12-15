@@ -41,6 +41,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
             & .menu-mobile__button {
                 grid-column: 1 / 2;
                 background-color: transparent;
+                position: relative;
+                z-index: 3;
 
                 & .bar {
                     position: relative;
@@ -81,6 +83,10 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                             background-color: var(--wp--preset--color--base);
                         }
                     }
+
+                    &:hover {
+                        background-color: var(--wp--preset--color--focus);
+                    }
                 }
 
                 &.active {
@@ -117,6 +123,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 background-color: transparent;
                 grid-column: 3 / 4;
                 margin-left: auto;
+                position: relative;
+                z-index: 3;
 
                 & .icon--wrapper {
                     position: relative;
@@ -201,10 +209,82 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                             background-color: var(--wp--preset--color--base);
                         }
                     }
+
+                    &:hover {
+                        background-color: var(--wp--preset--color--focus);
+                    }
                 }
 
                 &:hover {
                     background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+                }
+            }
+
+            & #custom-searchform {
+                position: absolute;
+                top: 0;
+                left: 0;
+                transform: translateY(-130%);
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 2;
+                background-color: light-dark(var(--wp--preset--color--base-alpha-50), var(--wp--preset--color--contrast-alpha-50));
+                backdrop-filter: blur(7px);
+                transition: transform .5s ease-in-out;
+
+                &.show {
+                    transform: translateY(0);
+                }
+
+                & .section {
+                    display: flex;
+                    width: 100%;
+                    max-width: 500px;
+
+                    & .wp-block-search__input {
+                        height: 48px;
+                    }
+
+                    & .buttons-container {
+                        display: flex;
+                        position: relative;
+
+                        & #searchsubmit {
+                            position: absolute;
+                            top: 3px;
+                            left: 0;
+                            transform: translateX(calc(-100% - 3px));
+                            height: 2.625rem;
+                            width: 2.625rem;
+                            padding: 0;
+                            display: grid;
+                            place-content: center;
+                            background-color: transparent;
+                            border: none;
+                            color: inherit;
+                            transition: background-color .3s ease;
+
+                            &:hover {
+                                background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
+                            }
+
+                            &:focus-visible {
+                                outline: none;
+                                background-color: var(--wp--preset--color--focus);
+                                color: var(--wp--preset--color--base);
+                            }
+                        }
+
+                        & .close-custom-searchform {
+                            & svg {
+                                width: 1rem;
+                                height: 1rem;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -293,6 +373,22 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
             text-align: center;
             padding: 1rem 0;
             border-top: 1px dashed var(--wp--preset--color--accent-6);
+        }
+    }
+}
+
+@media (width < 768px) {
+    #main-header {
+        & .block {
+            & .content {
+                & #custom-searchform {
+                    justify-content: left;
+
+                    & .section {
+                        width: calc(100% - 56px);
+                    }
+                }
+            }
         }
     }
 }

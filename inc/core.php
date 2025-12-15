@@ -670,8 +670,7 @@ function custom_wp_block_search($block_content, $block)
         ?>
         <form role="search" method="get" action="<?php echo home_url('/'); ?>" class="stories-block-search">
             <div class="stories-block-search__inside-wrapper ">
-                <input class="stories-block-search__input" id="stories-block-search__input-<?php echo $block['clientId']; ?>"
-                    placeholder="<?php esc_html_e('Buscar', 'stories'); ?>" value="" type="search" name="s" required="">
+                <input class="stories-block-search__input" id="<?php echo esc_attr(wp_unique_id('stories-block-search__input-')); ?>" placeholder="<?php esc_html_e('Buscar', 'stories'); ?>" value="" type="search" name="s" required="">
                 <button aria-label="<?php esc_html_e('Buscar', 'stories'); ?>"
                     class="stories-block-search__button stories-element-button" type="submit">
                     <?= stories_get_icon('search'); ?>

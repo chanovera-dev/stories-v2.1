@@ -49,12 +49,55 @@ function toggleMenuMobile() {
     if (!button) return
 
     button.classList.toggle('active')
+
 }
 
-function openCustomSearchform() {
+function handleClickOutsideSearch(e) {
     const button = document.querySelector('.search-mobile__button')
+    const searchform = document.querySelector('#custom-searchform')
 
-    if (!button) return
+    if (!searchform || !button) return
 
-    button.classList.toggle('active')
+    const clickedInsideMenu = searchform.contains(e.target)
+    const clickedToggleButton = button.contains(e.target)
+
+    if (!clickedInsideMenu && !clickedToggleButton) {
+        closeCustomSearchform()
+    }
+}
+
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape' || event.key === 'Esc') {
+        if (typeof closeCustomSearchform === 'function') {
+            closeCustomSearchform()
+        }
+    }
+});
+
+function toggleCustomSearchform() {
+    const button = document.querySelector('.search-mobile__button')
+    const searchform = document.querySelector('#custom-searchform')
+
+    if (!button || !searchform) return
+
+    const isActive = button.classList.toggle('active')
+    searchform.classList.toggle('show')
+
+    if (isActive) {
+        setTimeout(() => {
+            document.addEventListener('click', handleClickOutsideSearch)
+        }, 10)
+    } else {
+        document.removeEventListener('click', handleClickOutsideSearch)
+    }
+}
+
+function closeCustomSearchform() {
+    const button = document.querySelector('.search-mobile__button')
+    const searchform = document.querySelector('#custom-searchform')
+
+    if (button) button.classList.remove('active')
+    if (searchform) searchform.classList.remove('show')
+
+    document.removeEventListener('click', handleClickOutsideSearch)
 }
