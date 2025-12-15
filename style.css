@@ -71,6 +71,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 }
 
                 &:focus-visible {
+                    background-color: var(--wp--preset--color--focus);
+
                     & .bar {
                         background-color: var(--wp--preset--color--base);
 
@@ -187,6 +189,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 }
 
                 &:focus-visible {
+                    background-color: var(--wp--preset--color--focus);
+
                     & .icon--wrapper {
                         &::before {
                             border-color: var(--wp--preset--color--base);
