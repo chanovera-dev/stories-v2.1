@@ -485,7 +485,7 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 align-items: center;
                 justify-content: center;
                 z-index: 2;
-                background-color: light-dark(var(--wp--preset--color--base-alpha-50), var(--wp--preset--color--contrast-alpha-50));
+                background-color: light-dark(var(--wp--preset--color--base-alpha-50), var(--wp--preset--color--base-alpha-50-night));
                 backdrop-filter: blur(7px);
                 transition: transform .5s ease-in-out;
 
