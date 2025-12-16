@@ -50,32 +50,24 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 position: absolute;
                 top: 100%;
                 right: 0;
-                z-index: 5;
-                border: 1px solid light-dark(var(--wp--preset--color--accent-6), var(--wp--preset--color--accent-6));
-                box-shadow: rgba(17, 12, 46, 0.3) 0px 24px 50px 0px;
+                z-index: 0;
+                height: 0;
+                overflow: hidden;
 
-                & .glass-backdrop {
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    z-index: 0;
-                }
-
-                &>ul {
+                /*nivel principal*/
+                & .menu {
                     position: relative;
+                    border: 2px solid light-dark(#ffffff80, #0000003c);
                     padding-left: 0;
-                    list-style: none;
                     padding: .4rem;
-                    border: 1px solid light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
 
                     & li {
                         &>a {
+                            font-size: var(--wp--preset--font-size--small);
                             display: flex;
                             align-items: center;
-                            padding: .5rem;
-                            line-height: 1;
+                            padding: 0 .7rem;
+                            height: 30px;
                             transition: background-color .3s ease;
 
                             &:hover {
@@ -83,73 +75,228 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                             }
                         }
 
-                        & .wrapper-for-title {
-                            padding: .5rem;
-                            padding-right: 0;
-                            line-height: 1;
-                            display: flex;
-                            align-items: center;
-                            justify-content: space-between;
-                            gap: .5rem;
+                        &.menu-item-has-children {
+                            & .wrapper-for-title {
+                                display: flex;
+                                align-items: center;
+                                justify-content: space-between;
+                                gap: .5rem;
+                                height: 30px;
+                                padding-left: .7rem;
 
-                            & a {
-                                transition: color .3s ease;
-
-                                &:hover {
-                                    color: light-dark(var(--wp--preset--color--button), var(--wp--preset--color--primary-night));
-                                }
-                            }
-
-                            & .button-for-submenu {
-                                width: 17px;
-                                height: 17px;
-                                display: grid;
-                                place-content: center;
-                                background-color: transparent;
-                                border: none;
-                                cursor: pointer;
-                                transition: background-color .3s ease;
-
-                                &:hover {
-                                    background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
-                                }
-                            }
-                        }
-
-                        &>ul {
-                            padding: .4rem;
-                            background-color: light-dark(var(--wp--preset--color--secondary-alpha-50), var(--wp--preset--color--secondary-alpha-50-night));
-                            list-style: none;
-                            box-shadow: inset 0 0 7px light-dark(var(--wp--preset--color--primary-dark-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
-
-                            & li {
                                 &>a {
-                                    padding-left: 1.5rem;
                                     font-size: var(--wp--preset--font-size--small);
-                                }
 
-                                & .wrapper-for-title {
-                                    padding-left: 1.5rem;
-
-                                    & a {
-                                        font-size: var(--wp--preset--font-size--small);
+                                    &:hover {
+                                        color: light-dark(var(--wp--preset--color--primary-strong), var(--wp--preset--color--primary-night));
                                     }
                                 }
 
-                                & ul {
+                                & .button-for-submenu {
+                                    display: grid;
+                                    place-content: center;
+                                    width: 1rem;
+                                    height: 1rem;
                                     background-color: transparent;
-                                    box-shadow: none;
-                                    padding: .4rem 0;
+                                    border-radius: 50%;
+                                    border: none;
+                                    cursor: pointer;
+                                    transition: background-color .3s ease, transform .6s ease;
 
-                                    & li {
-                                        & a {
-                                            padding-left: 3rem;
+                                    &:hover {
+                                        background-color: light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+                                    }
+                                }
+                            }
+
+                            /*submenú de primer nivel abierto*/
+                            &.open {
+                                &.menu-item-has-children {
+                                    & .wrapper-for-title {
+                                        & .button-for-submenu {
+                                            transform: rotate(180deg);
+                                        }
+                                    }
+
+                                    & .sub-menu {
+                                        & li {
+                                            &>a {
+                                                visibility: visible;
+                                                height: 30px;
+                                                color: initial;
+                                                transition: 0.3s height cubic-bezier(0.4, 0, 0.2, 1),
+                                                    0.3s 0.3s color,
+                                                    0.3s background-color;
+                                            }
+
+                                            &.menu-item-has-children {
+                                                & .wrapper-for-title {
+                                                    visibility: visible;
+                                                    height: 30px;
+                                                    color: initial;
+                                                    transition: 0.3s height cubic-bezier(0.4, 0, 0.2, 1),
+                                                        0.3s 0.3s color,
+                                                        0.6s visibility;
+
+                                                    & .button-for-submenu {
+                                                        color: initial;
+                                                        visibility: visible;
+                                                        transition: 0.3s 0.3s color,
+                                                            0.6s visibility,
+                                                            background-color .3s ease, transform .6s ease;
+                                                        transform: rotate(0deg);
+                                                    }
+                                                }
+
+                                                & .sub-menu {
+                                                    & li {
+                                                        &>a {
+                                                            visibility: hidden;
+                                                            height: 0;
+                                                            color: transparent;
+                                                        }
+
+                                                        &.menu-item-has-children {
+                                                            & .wrapper-for-title {
+                                                                visibility: hidden;
+                                                                height: 0;
+                                                                color: transparent;
+
+                                                                & .button-for-submenu {
+                                                                    visibility: hidden;
+                                                                    color: transparent;
+                                                                    transform: rotate(0deg);
+                                                                    transition: background-color .3s ease, transform .6s ease;
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+
+                                                /*submenu de segundo nivel abierto*/
+                                                &.open {
+                                                    &.menu-item-has-children {
+                                                        & .wrapper-for-title {
+                                                            & .button-for-submenu {
+                                                                transform: rotate(180deg);
+                                                            }
+                                                        }
+
+                                                        & .sub-menu {
+                                                            & li {
+                                                                &>a {
+                                                                    visibility: visible;
+                                                                    height: 30px;
+                                                                    color: initial;
+                                                                    transition: 0.3s height cubic-bezier(0.4, 0, 0.2, 1),
+                                                                        0.3s 0.3s color,
+                                                                        0.3s background-color;
+                                                                }
+
+                                                                &.menu-item-has-children {
+                                                                    & .wrapper-for-title {
+                                                                        visibility: visible;
+                                                                        height: 30px;
+                                                                        color: initial;
+                                                                        transition: 0.3s height cubic-bezier(0.4, 0, 0.2, 1),
+                                                                            0.3s 0.3s color;
+
+                                                                        & .button-for-submenu {
+                                                                            color: initial;
+                                                                            visibility: visible;
+                                                                            transition: 0.3s 0.3s color,
+                                                                                0.6s visibility;
+                                                                            transform: rotate(0deg);
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+
+                            /*submenú de primer nivel cerrado*/
+                            & .sub-menu {
+                                list-style: none;
+                                padding-left: 1.6rem;
+
+                                & li {
+                                    &>a {
+                                        visibility: hidden;
+                                        height: 0;
+                                        color: transparent;
+                                        transition: 0.3s 0.3s height,
+                                            0.6s visibility,
+                                            0.3s color;
+                                    }
+
+                                    &.menu-item-has-children {
+                                        & .wrapper-for-title {
+                                            visibility: hidden;
+                                            height: 0;
+                                            color: transparent;
+                                            transition: 0.3s 0.3s height,
+                                                0.6s visibility,
+                                                0.3s color;
+                                        }
+
+                                        & .sub-menu {
+                                            & li {
+                                                &>a {
+                                                    visibility: hidden;
+                                                    height: 0;
+                                                    color: transparent;
+                                                    transition: 0.3s 0.3s height,
+                                                        0.6s visibility,
+                                                        0.3s color;
+                                                }
+
+                                                &.menu-item-has-children {
+                                                    & .wrapper-for-title {
+                                                        visibility: hidden;
+                                                        height: 0;
+                                                        color: transparent;
+                                                        transition: 0.3s 0.3s height,
+                                                            0.6s visibility,
+                                                            0.3s color;
+
+                                                        & .button-for-submenu {
+                                                            visibility: hidden;
+                                                            color: transparent;
+                                                            transition: 0.6s visibility,
+                                                                0.3s color;
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
                             }
                         }
                     }
+                }
+
+                &.open {
+                    height: fit-content;
+                    border: 1px solid light-dark(#8b8b8b80, #84848480);
+                    box-shadow: rgba(17, 12, 46, 0.3) 0px 24px 50px 0px;
+
+                    & .glass-backdrop {
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        z-index: 0;
+                    }
+
+
                 }
             }
 

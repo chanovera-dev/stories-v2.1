@@ -45,10 +45,12 @@ scrollActions()
 
 function toggleMenuMobile() {
     const button = document.querySelector('.menu-mobile__button')
+    const menu = document.querySelector('.main-navigation')
 
-    if (!button) return
+    if (!button || !menu) return
 
     button.classList.toggle('active')
+    menu.classList.toggle('open')
 
 }
 
@@ -101,3 +103,30 @@ function closeCustomSearchform() {
 
     document.removeEventListener('click', handleClickOutsideSearch)
 }
+
+function menuWithChildren() {
+    const menuItems = document.querySelectorAll('.menu-item-has-children')
+
+    menuItems.forEach(item => {
+        item.addEventListener('click', function (e) {
+
+            if (e.target.tagName === 'A') {
+                return;
+            }
+
+            e.preventDefault()
+            e.stopPropagation()
+
+            item.classList.toggle('open')
+
+            const subMenu = item.querySelector('.sub-menu')
+            if (subMenu) {
+                const childrenCount = subMenu.children.length
+                const transitionTime = childrenCount * 0.1
+                subMenu.style.transition = `max-height ${transitionTime}s ease-in-out`
+                subMenu.classList.toggle('open')
+            }
+        })
+    })
+}
+document.addEventListener('DOMContentLoaded', menuWithChildren)

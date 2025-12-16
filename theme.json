@@ -39,6 +39,11 @@
 					"slug": "contrast-alpha-50"
 				},
 				{
+					"color": "#207c4f",
+					"name": "Primary Strong",
+					"slug": "primary-strong"
+				},
+				{
 					"color": "#9dbab9",
 					"name": "Primary",
 					"slug": "primary"

@@ -454,7 +454,7 @@ body {
 }
 
 .main-navigation {
-    border-radius: calc(1rem + 1px);
+    border-radius: 14px;
 }
 
 .gallery-wrapper,
@@ -462,14 +462,23 @@ body {
 .btn-pagination,
 .post-body__header .wp-post-image,
 .post-video-wrapper video,
-.attachment-full.size-full.wp-post-image,
-.main-navigation .glass-backdrop,
-.main-navigation>ul {
+.attachment-full.size-full.wp-post-image {
     border-radius: 1rem;
 }
 
-.main-navigation>ul>li>ul {
-    border-radius: .6rem;
+.main-navigation .glass-backdrop,
+.main-navigation>.menu {
+    border-radius: 13px;
+}
+
+.main-navigation {
+    & .menu {
+        & li {
+            &.item-has-children {
+                & .sub-menu {}
+            }
+        }
+    }
 }
 
 .post-tag,
@@ -521,7 +530,7 @@ body.is-chromium {
     }
 
     .main-navigation {
-        border-radius: calc(2rem + 1px);
+        border-radius: 24px;
         corner-shape: squircle;
     }
 
@@ -530,16 +539,25 @@ body.is-chromium {
     .btn-pagination,
     .post-body__header .wp-post-image,
     .post-video-wrapper video,
-    .attachment-full.size-full.wp-post-image,
-    .main-navigation .glass-backdrop,
-    .main-navigation>ul {
+    .attachment-full.size-full.wp-post-image {
         border-radius: 2rem;
         corner-shape: squircle;
     }
 
-    .main-navigation>ul>li>ul {
-        border-radius: 1.6rem;
+    .main-navigation .glass-backdrop,
+    .main-navigation>.menu {
+        border-radius: 22px;
         corner-shape: squircle;
+    }
+
+    .main-navigation {
+        & .menu {
+            & li {
+                &.item-has-children {
+                    & .sub-menu {}
+                }
+            }
+        }
     }
 
     .post-tag,
