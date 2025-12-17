@@ -41,8 +41,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 grid-column: 2 / 3;
 
                 & .custom-logo {
-                    width: 46px;
-                    height: auto;
+                    width: auto;
+                    height: 46px;
                 }
             }
 
