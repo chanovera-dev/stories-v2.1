@@ -2,9 +2,12 @@
 
 Stories V2.1 es un tema de WordPress moderno, minimalista y centrado en el contenido. Diseñado para ofrecer una experiencia de lectura inmersiva, cuenta con una arquitectura modular y optimizada.
 
+Ha sido creado como base para otros proyectos, enlazando otros archivos en functions.php para extenderlo, y de manera similar agregar nuevas plantillas dentro de las carpetas 'loop', 'page', 'single', 'templates', etc.
+
 ## 🚀 Características Principales
 
 *   **Diseño "Mobile-First":** Maquetación responsiva utilizando CSS moderno (Nesting, Variables) y `theme.json`.
+*   **Modo noche activado por defecto:** El modo noche viene activado por defecto de manera automática de acuerdo con la configuración del sistema operativo del usuario.
 *   **Carga Condicional de Recursos:** JavaScript y CSS se cargan solo cuando son necesarios (lógica en `inc/core.php`), asegurando un rendimiento óptimo.
 *   **Formatos de Post Personalizados:** Soporte nativo y estilizado para:
     *   Estándar
