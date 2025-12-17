@@ -66,7 +66,7 @@
                     </div>
                 </button>
                 <?php if (has_nav_menu('primary')) : ?>
-                    <button id="menu-mobile__button" class="menu-mobile__button btn-pagination small-pagination" onclick="toggleMenuMobile()">
+                    <button id="menu-mobile__button" class="menu-mobile__button btn-pagination small-pagination" onclick="toggleMenuMobile()" aria-label="Open menu">
                         <span class="bar"></span>
                     </button>
                 <?php endif; ?>
