@@ -24,6 +24,7 @@ Ha sido creado como base para otros proyectos, enlazando otros archivos en funct
     *   **Últimas Entradas:** Filtrado avanzado para excluir ciertos formatos de "micro-contenido" (artículos del tipo 'aside', 'quote', 'link', 'image', 'video').
     *   **Listas:** Estilos personalizados para categorías y archivos.
 *   **Navegación Avanzada:**
+    *   **Menú Compacto:** El menú principal se presenta siempre en modo compacto para dar mayor foco al contenido, pero su comportamiento se puede cambiar fácilmente con CSS.
     *   Migas de pan (Breadcrumbs) dinámicas con lógica profunda para categorías, formatos y fechas.
     *   Paginación numérica y navegación entre posts adyacentes.
 *   **SEO y Analítica:** Estructura semántica HTML5, soporte para subida de SVG y Google Tag Manager integrado.
