@@ -7,3 +7,13 @@ body:has(#wpadminbar) {
         }
     }
 }
+
+@media (width <=600px) {
+    body:has(#wpadminbar) {
+        &:is(.scroll-down, .scroll-up) {
+            #main-header {
+                top: 0;
+            }
+        }
+    }
+}
