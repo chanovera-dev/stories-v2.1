@@ -65,9 +65,11 @@
                         <div class="bar"></div>
                     </div>
                 </button>
-                <button id="menu-mobile__button" class="menu-mobile__button btn-pagination small-pagination" onclick="toggleMenuMobile()">
-                    <span class="bar"></span>
-                </button>
+                <?php if (has_nav_menu('primary')) : ?>
+                    <button id="menu-mobile__button" class="menu-mobile__button btn-pagination small-pagination" onclick="toggleMenuMobile()">
+                        <span class="bar"></span>
+                    </button>
+                <?php endif; ?>
                 <form role="search" method="get" id="custom-searchform" class="" action="<?php echo esc_url( home_url( '/' ) ); ?>">
                     <div class="section">
                         <label class="screen-reader-text" for="s"><?php esc_html__('Buscar', 'stories'); ?></label>
