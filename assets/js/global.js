@@ -49,9 +49,30 @@ function toggleMenuMobile() {
 
     if (!button || !menu) return
 
-    button.classList.toggle('active')
+    const isActive = button.classList.toggle('active')
     menu.classList.toggle('open')
 
+    if (isActive) {
+        setTimeout(() => {
+            document.addEventListener('click', handleClickOutsideMenu)
+        }, 10)
+    } else {
+        document.removeEventListener('click', handleClickOutsideMenu)
+    }
+}
+
+function handleClickOutsideMenu(e) {
+    const button = document.querySelector('.menu-mobile__button')
+    const menu = document.querySelector('.main-navigation')
+
+    if (!menu || !button) return
+
+    const clickedInsideMenu = menu.contains(e.target)
+    const clickedToggleButton = button.contains(e.target)
+
+    if (!clickedInsideMenu && !clickedToggleButton) {
+        closeMenuMobile()
+    }
 }
 
 function handleClickOutsideSearch(e) {
@@ -60,10 +81,10 @@ function handleClickOutsideSearch(e) {
 
     if (!searchform || !button) return
 
-    const clickedInsideMenu = searchform.contains(e.target)
+    const clickedSearchform = searchform.contains(e.target)
     const clickedToggleButton = button.contains(e.target)
 
-    if (!clickedInsideMenu && !clickedToggleButton) {
+    if (!clickedSearchform && !clickedToggleButton) {
         closeCustomSearchform()
     }
 }
@@ -72,6 +93,7 @@ document.addEventListener('keydown', function (event) {
     if (event.key === 'Escape' || event.key === 'Esc') {
         if (typeof closeCustomSearchform === 'function') {
             closeCustomSearchform()
+            closeMenuMobile()
         }
     }
 })
@@ -130,3 +152,15 @@ function menuWithChildren() {
     })
 }
 document.addEventListener('DOMContentLoaded', menuWithChildren)
+
+function closeMenuMobile() {
+    const button = document.querySelector('.menu-mobile__button')
+    const menu = document.querySelector('.main-navigation')
+
+    if (!button || !menu) return
+
+    button.classList.remove('active')
+    menu.classList.remove('open')
+
+    document.removeEventListener('click', handleClickOutsideMenu)
+}
