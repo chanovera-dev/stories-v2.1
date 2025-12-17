@@ -88,7 +88,7 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                                     font-size: var(--wp--preset--font-size--small);
 
                                     &:hover {
-                                        color: light-dark(var(--wp--preset--color--primary-strong), var(--wp--preset--color--primary-night));
+                                        color: light-dark(var(--wp--preset--color--primary-strong), var(--wp--preset--color--primary));
                                     }
                                 }
 
