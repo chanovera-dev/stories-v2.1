@@ -4,7 +4,7 @@ Stories V2.1 es un tema de WordPress moderno, minimalista y centrado en el conte
 
 Ha sido creado como base para otros proyectos, enlazando otros archivos en functions.php para extenderlo, y de manera similar agregar nuevas plantillas dentro de las carpetas 'loop', 'page', 'single', 'templates', etc.
 
-## 🚀 Características Principales
+## Características Principales
 
 *   **Diseño "Mobile-First":** Maquetación responsiva utilizando CSS moderno (Nesting, Variables) y `theme.json`.
 *   **Modo noche activado por defecto:** El modo noche viene activado por defecto de manera automática de acuerdo con la configuración del sistema operativo del usuario.
@@ -30,7 +30,7 @@ Ha sido creado como base para otros proyectos, enlazando otros archivos en funct
 *   **SEO y Analítica:** Estructura semántica HTML5, soporte para subida de SVG y Google Tag Manager integrado.
 *   **Personalizador:** Opción para editar la "Biografía del Sitio" directamente desde el personalizador de WordPress.
 
-## 📂 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```text
 stories-next/
@@ -47,19 +47,19 @@ stories-next/
 └── theme.json          # Configuración global de estilos para Gutenberg
 ```
 
-## 🛠 Instalación
+## Instalación
 
 1.  Copia la carpeta del tema al directorio `/wp-content/themes/` de tu instalación de WordPress.
 2.  Accede al panel de administración > **Apariencia** > **Temas**.
 3.  Activa **Stories V2.1**.
 
-## ⚙️ Desarrollo y Personalización
+## Desarrollo y Personalización
 
 *   **Estilos:** Los estilos están modularizados en `assets/css/` y se cargan condicionalmente dependiendo de la vista (Home, Single, Archive, etc.). `wp-root.css` define las variables globales y tokens de diseño.
 *   **Scripts:** La interactividad (galerías, animaciones) se maneja mediante módulos JS en `assets/js/`.
 *   **Lógica:** Toda la funcionalidad crítica reside en `inc/core.php` para mantener `functions.php` limpio y ordenado.
 
-## 📝 Créditos
+## Créditos
 
 *   **Autor:** ChanoDEV (https://chano.dev)
 *   **Licencia:** GNU General Public License v2 or later
