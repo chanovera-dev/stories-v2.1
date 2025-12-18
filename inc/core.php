@@ -318,14 +318,19 @@ add_action('wp_head', 'theme_custom_icons');
  */
 function add_gtm_header()
 {
+    $ga_id = get_theme_mod('stories_ga_id', 'G-7XNN23WGQT');
+
+    if (!$ga_id) {
+        return;
+    }
     ?>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7XNN23WGQT"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=<?php echo esc_attr($ga_id); ?>"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
-        gtag('config', 'G-7XNN23WGQT', { 'transport_type': 'beacon', 'send_page_view': false });
+        gtag('config', '<?php echo esc_js($ga_id); ?>', { 'transport_type': 'beacon', 'send_page_view': false });
     </script>
     <?php
 }
@@ -581,6 +586,20 @@ function stories_customize_register($wp_customize)
         'section' => 'stories_site_data',
         'type' => 'textarea',
     ));
+
+    // ====== SETTING: Google Analytics ID ======
+    $wp_customize->add_setting('stories_ga_id', array(
+        'default' => 'G-7XNN23WGQT',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+
+    // ====== CONTROL: Google Analytics ID ======
+    $wp_customize->add_control('stories_ga_id', array(
+        'label' => __('Google Analytics ID', 'stories'),
+        'description' => __('Enter your Google Analytics G-ID (e.g., G-XXXXXXXXXX).', 'stories'),
+        'section' => 'stories_site_data',
+        'type' => 'text',
+    ));
 }
 add_action('customize_register', 'stories_customize_register');
 
@@ -602,7 +621,8 @@ add_action('customize_register', 'stories_customize_register');
  * @param object $args Menu arguments
  * @return string Modified menu item HTML
  */
-function custom_menu($item_output, $item, $depth, $args) {
+function custom_menu($item_output, $item, $depth, $args)
+{
     $allowed_locations = ['primary'];
 
     if (!isset($args->theme_location) || !in_array($args->theme_location, $allowed_locations)) {
@@ -714,7 +734,9 @@ function custom_wp_block_search($block_content, $block)
         ?>
         <form role="search" method="get" action="<?php echo home_url('/'); ?>" class="stories-block-search">
             <div class="stories-block-search__inside-wrapper ">
-                <input class="stories-block-search__input" id="<?php echo esc_attr(wp_unique_id('stories-block-search__input-')); ?>" placeholder="<?php esc_html_e('Buscar', 'stories'); ?>" value="" type="search" name="s" required="">
+                <input class="stories-block-search__input"
+                    id="<?php echo esc_attr(wp_unique_id('stories-block-search__input-')); ?>"
+                    placeholder="<?php esc_html_e('Buscar', 'stories'); ?>" value="" type="search" name="s" required="">
                 <button aria-label="<?php esc_html_e('Buscar', 'stories'); ?>"
                     class="stories-block-search__button stories-element-button" type="submit">
                     <?= stories_get_icon('search'); ?>
