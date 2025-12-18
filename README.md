@@ -28,7 +28,9 @@ Ha sido creado como base para otros proyectos, enlazando otros archivos en funct
     *   Migas de pan (Breadcrumbs) dinámicas con lógica profunda para categorías, formatos y fechas.
     *   Paginación numérica y navegación entre posts adyacentes.
 *   **SEO y Analítica:** Estructura semántica HTML5, soporte para subida de SVG y Google Tag Manager integrado.
-*   **Personalizador:** Opción para editar la "Biografía del Sitio" directamente desde el personalizador de WordPress.
+*   **Personalizador:** 
+    *   Opción para editar el Google Tag Manager directamente desde el personalizador de WordPress.
+    *   Opción para editar la "Biografía del Sitio" directamente desde el personalizador de WordPress.
 
 ## Estructura del Proyecto
 

@@ -574,19 +574,6 @@ function stories_customize_register($wp_customize)
         'priority' => 11,
     ));
 
-    // ====== SETTING: Short Bio ======
-    $wp_customize->add_setting('stories_bio', array(
-        'default' => __('Relatos y Cartas es un espacio dedicado a la creatividad y la expresión a través de las palabras. Aquí encontrarás cuentos, microcuentos, poemas e historias que buscan inspirar, emocionar y conectar con los lectores.', 'stories'),
-        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
-    ));
-
-    // ====== CONTROL: Short Bio ======
-    $wp_customize->add_control('stories_bio', array(
-        'label' => __('Short Bio', 'stories'),
-        'section' => 'stories_site_data',
-        'type' => 'textarea',
-    ));
-
     // ====== SETTING: Google Analytics ID ======
     $wp_customize->add_setting('stories_ga_id', array(
         'default' => 'G-7XNN23WGQT',
@@ -599,6 +586,19 @@ function stories_customize_register($wp_customize)
         'description' => __('Enter your Google Analytics G-ID (e.g., G-XXXXXXXXXX).', 'stories'),
         'section' => 'stories_site_data',
         'type' => 'text',
+    ));
+
+    // ====== SETTING: Short Bio ======
+    $wp_customize->add_setting('stories_bio', array(
+        'default' => __('Relatos y Cartas es un espacio dedicado a la creatividad y la expresión a través de las palabras. Aquí encontrarás cuentos, microcuentos, poemas e historias que buscan inspirar, emocionar y conectar con los lectores.', 'stories'),
+        'sanitize_callback' => 'wp_kses_post', // Allows safe HTML
+    ));
+
+    // ====== CONTROL: Short Bio ======
+    $wp_customize->add_control('stories_bio', array(
+        'label' => __('Short Bio', 'stories'),
+        'section' => 'stories_site_data',
+        'type' => 'textarea',
     ));
 }
 add_action('customize_register', 'stories_customize_register');
