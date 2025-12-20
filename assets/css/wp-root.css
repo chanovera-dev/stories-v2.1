@@ -6,6 +6,21 @@
 
     --max-width--content: min(100% - 1.25rem, 68.5rem);
     /* --max-width--content: min(100% - 2.5rem, 1366px); */
+
+    /* opacity */
+    --opacity-clouds: 1;
+    --opacity-stars: 0;
+
+    /* shadows */
+    --modern-text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.4), 0px 4px 13px rgba(0, 0, 0, 0.1), 0px 9px 23px rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* opacity */
+        --opacity-clouds: .15;
+        --opacity-stars: 1;
+    }
 }
 
 @media (width >=783px) {

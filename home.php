@@ -11,7 +11,13 @@ get_header(); ?>
 
 <main id="main" class="site-main" role="main">
 
-    <?php wp_breadcrumbs(); ?>
+    <?php
+    if (!is_paged()):
+        get_template_part('templates/home/hero', 'section');
+    else:
+        wp_breadcrumbs();
+    endif;
+    ?>
 
     <section class="block posts--body">
         <div class="content">

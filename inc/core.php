@@ -132,6 +132,8 @@ function stories_get_assets()
             'related-styles' => "$assets_path/css/related.css",
             'comments' => "$assets_path/css/comments.css",
             'error404' => "$assets_path/css/error404.css",
+            // relatos & cartas
+            'home-hero' => "$assets_path/css/home-hero.css",
         ],
         'js' => [
             // All pages
@@ -144,6 +146,10 @@ function stories_get_assets()
             'post-gallery-script' => "$assets_path/js/post-gallery.js",
             'related-script' => "$assets_path/js/related.js",
             'post-scripts' => "$assets_path/js/post.js",
+            // relatos & cartas
+            'moving-clouds' => "$assets_path/js/moving-clouds.js",
+            'quotes-slideshow' => "$assets_path/js/quotes-slideshow.js",
+            'blur-typing' => "$assets_path/js/blur-typing.js",
         ]
     ];
 }
@@ -933,8 +939,15 @@ function stories_has_related_posts($post_id = null)
  */
 function posts_styles()
 {
-    if (is_home() or is_archive() or is_search()) {
+    if (is_home() or is_archive() or is_search() || is_page_template('archive-detras-del-espejo.php')) {
         $a = stories_get_assets();
+
+        if (is_home() && is_main_query() && !is_paged()) {
+            stories_enqueue_style('hero', $a['css']['home-hero']);
+            stories_enqueue_script('moving-clouds', $a['js']['moving-clouds']);
+            stories_enqueue_script('quotes-slideshow', $a['js']['quotes-slideshow']);
+            stories_enqueue_script('blur-typing', $a['js']['blur-typing']);
+        }
 
         global $wp_query;
 

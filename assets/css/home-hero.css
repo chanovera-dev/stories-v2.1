@@ -1,0 +1,399 @@
+.site-main {
+    & header.block {
+        & .content {
+            position: relative;
+            min-height: 28.125rem;
+            border-radius: 1rem;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                z-index: -1;
+                background: linear-gradient(to bottom,
+                        light-dark(var(--wp--preset--color--sky-1), var(--wp--preset--color--sky-1-night)) 0%,
+                        light-dark(var(--wp--preset--color--sky-1), var(--wp--preset--color--sky-1-night)) 40%,
+                        light-dark(var(--wp--preset--color--sky-2), var(--wp--preset--color--sky-2-night)) 100%);
+                background-size: 100% 200%;
+                background-position: top;
+                transition: background-position 0.5s ease;
+                animation: sky-content 2.5s ease forwards;
+            }
+
+            & .stars {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                z-index: 1;
+                background: transparent url("https://relatosycartas.com/wp-content/themes/stories-V2/assets/img/stars.webp") repeat;
+                opacity: 0;
+                animation: opacity-stars .6s ease 1.5s forwards;
+            }
+
+            & .clouds--wrapper {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                display: flex;
+                z-index: 2;
+
+                & .clouds {
+                    width: 100%;
+                    height: 100%;
+                    z-index: 0;
+                    opacity: 0;
+
+                    animation: opacity-clouds .6s ease 1.5s forwards;
+
+                    .c1,
+                    .c2 {
+                        width: 400px;
+                        height: 350px;
+                        position: absolute;
+                        background: transparent url("https://relatosycartas.com/wp-content/themes/stories-V2/assets/img/clouds.webp") 0 0 no-repeat;
+                        background-size: 100%;
+                    }
+
+                    .c1.one,
+                    .c2.one {
+                        top: -260px;
+                        left: 0px;
+                    }
+
+                    .c1.two,
+                    .c2.two {
+                        top: -200px;
+                        left: 100px;
+                    }
+
+                    .c1.three,
+                    .c2.three {
+                        top: -240px;
+                        right: 100px;
+                    }
+
+                    .c1.four,
+                    .c22.four {
+                        top: -180px;
+                        right: 0px;
+                    }
+
+                    .c2 .one {
+                        top: -209px;
+                    }
+                }
+            }
+
+            & .tree--wrapper {
+                display: grid;
+                place-content: end;
+                position: absolute;
+                width: 300px;
+                height: 100%;
+                bottom: -50px;
+                right: 27px;
+                transform: translate(130%, 0);
+                z-index: 3;
+                animation: tree-entrance 1.5s ease-in-out 1.5s forwards;
+
+                & .tree {
+                    width: 100%;
+                    height: auto;
+                }
+
+                & .tree-1 {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    animation: leaves-wind 5s ease-in-out infinite;
+                }
+
+                & .tree-2 {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    width: 100%;
+                    animation: leaves-wind 5s ease-in-out .3s infinite;
+                }
+            }
+
+            & .container {
+                position: relative;
+                z-index: 4;
+                height: 28.125rem;
+                display: grid;
+                grid-template-rows: 1fr auto;
+
+                & .slideshow--wrapper {
+                    width: 100%;
+                    height: 100%;
+                    overflow: hidden;
+                    color: #fff;
+
+                    & .slideshow {
+                        height: 100%;
+                        display: flex;
+
+                        & .quote-item {
+                            padding: 20px;
+                            border: none;
+                            opacity: 0;
+                            transition: opacity .3s ease-in-out .3s;
+
+                            &.active {
+                                opacity: 1;
+
+                                & .quote-content {
+                                    & h3 {
+                                        transform: translateX(0);
+                                    }
+                                }
+                            }
+
+                            & .quote-content {
+                                &>*:not(:last-child) {
+                                    margin-bottom: 1.5rem;
+                                }
+
+                                & h2,
+                                & h3 {
+                                    text-shadow: var(--modern-text-shadow);
+                                }
+
+                                & h3 {
+                                    transform: translateX(100%);
+                                    transition: transform .6s ease-in-out 2.5s;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                & .slideshow-bullets-wrapper {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: .5rem;
+
+                    & .btn-pagination {
+                        background-color: transparent;
+                        color: var(--wp--preset--color--white);
+
+                        &:hover {
+                            background-color: var(--wp--preset--color--base-alpha-50-night);
+                            backdrop-filter: blur(10px);
+                        }
+                    }
+
+                    & .slideshow-bullets {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 20px;
+
+                        & .bullet {
+                            width: 13px;
+                            height: 13px;
+                            border-radius: 50%;
+                            background-color: transparent;
+                            border: 2px solid var(--wp--preset--color--white);
+                            cursor: pointer;
+
+                            &.active {
+                                background-color: var(--wp--preset--color--white);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@keyframes sky-content {
+    0% {
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background-position: top;
+    }
+
+    50% {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background-position: top;
+    }
+
+    70% {
+        width: 100%;
+        height: 100%;
+        border-radius: 10rem;
+        background-position: top;
+    }
+
+    100% {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        background-position: bottom;
+    }
+}
+
+@keyframes opacity-stars {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: var(--opacity-stars);
+    }
+}
+
+@keyframes opacity-clouds {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: var(--opacity-clouds);
+    }
+}
+
+@keyframes tree-entrance {
+    0% {
+        transform: translate(130%, 0px);
+    }
+
+    100% {
+        transform: translate(0, 0px);
+    }
+}
+
+@keyframes leaves-wind {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+        filter: brightness(1.3);
+    }
+
+    25% {
+        transform: translateX(2px) translateY(1px) scaleY(.999);
+        filter: brightness(1.9);
+    }
+
+    50% {
+        transform: translateX(-2px) translateY(-2px) scaleY(1.001);
+        filter: brightness(1.6);
+    }
+
+    75% {
+        transform: translateX(3px) translateY(0) scaleY(.999);
+        filter: brightness(1.5);
+    }
+}
+
+@keyframes leaves-wind--night {
+
+    0%,
+    100% {
+        transform: translateX(0) translateY(0) scaleY(1);
+        filter: brightness(.4);
+    }
+
+    25% {
+        transform: translateX(2px) translateY(1px) scaleY(.999);
+        filter: brightness(.4);
+    }
+
+    50% {
+        transform: translateX(-2px) translateY(-2px) scaleY(1.001);
+        filter: brightness(.4);
+    }
+
+    75% {
+        transform: translateX(3px) translateY(0) scaleY(.999);
+        filter: brightness(.4);
+    }
+}
+
+@media (width < 600px) {
+    .site-main {
+        & header.block {
+            & .content {
+                min-height: 34.375rem;
+
+                & .clouds--wrapper {
+                    width: 300%;
+                }
+
+                & .tree--wrapper {
+                    bottom: 0;
+                }
+
+                & .container {
+                    height: 34.375rem;
+                }
+            }
+        }
+    }
+}
+
+@media (width >=768px) {
+    .site-main {
+        & header.block {
+            & .content {
+                & .container {
+                    & .slideshow--wrapper {
+                        width: 60%;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .site-main {
+        header.block {
+            & .content {
+                & .tree--wrapper {
+                    & .tree {
+                        filter: brightness(.4);
+                    }
+
+                    & .tree-1 {
+                        animation: leaves-wind--night 5s ease-in-out infinite;
+                    }
+
+                    & .tree-2 {
+                        animation: leaves-wind--night 5s ease-in-out .3s infinite;
+                    }
+                }
+            }
+        }
+    }
+}
+
+body.is-chromium {
+    .site-main {
+        & header.block {
+            & .content {
+                border-radius: 2rem;
+                corner-shape: squircle;
+            }
+        }
+    }
+}

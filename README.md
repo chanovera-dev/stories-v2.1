@@ -32,6 +32,20 @@ Ha sido creado como base para otros proyectos, enlazando otros archivos en funct
     *   Opción para editar el Google Tag Manager directamente desde el personalizador de WordPress.
     *   Opción para editar la "Biografía del Sitio" directamente desde el personalizador de WordPress.
 
+## Características Específicas de Relatos y Cartas
+
+Esta rama incluye funcionalidades exclusivas diseñadas para la identidad visual de relatosycartas.com:
+
+*   **Efectos Visuales Inmersivos:**
+    *   **Nubes en Movimiento:** Efecto atmosférico de fondo (`moving-clouds.js`) que añade profundidad y dinamismo suave.
+    *   **Blur Typing:** Efecto de escritura tipo máquina de escribir con desenfoque (`blur-typing.js`) para una introducción dramática de textos.
+    *   **Carrusel de Citas:** Rotación interactiva de citas destacadas (`quotes-slideshow.js`).
+*   **Plantillas Personalizadas:**
+    *   **Detrás del Espejo (DDE):** Plantilla de bucle especializada (`template-parts/loop/content-dde.php`) para la sección "Detrás del Espejo", con un diseño distintivo.
+*   **Home Hero:** Estilos dedicados (`home-hero.css`) para la sección principal de la página de inicio, integrando los efectos visuales.
+*   **Personalizador Extendido:**
+    *   **Datos del Sitio:** Nueva sección para gestionar fácilmente la "Biografía" y el ID de Google Analytics sin tocar código.
+
 ## Estructura del Proyecto
 
 ```text

@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', () => {
-    animateIn('.post');
+    animateIn('.post, .detras-del-espejo');
 });

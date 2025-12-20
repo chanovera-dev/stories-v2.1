@@ -15,6 +15,7 @@ body {
     }
 }
 
+.detras-del-espejo:not(:has(.breadcrumbs--wrapper)),
 .post:not(:has(.breadcrumbs--wrapper)) {
     position: relative;
     opacity: 0;

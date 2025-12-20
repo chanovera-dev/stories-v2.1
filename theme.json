@@ -197,6 +197,26 @@
 					"color": "#030f11",
 					"name": "Footer Background Night",
 					"slug": "footer-background-night"
+				},
+				{
+					"color": "#1e90ff",
+					"name": "Sky 1",
+					"slug": "sky-1"
+				},
+				{
+					"color": "#87CEEB",
+					"name": "Sky 2",
+					"slug": "sky-2"
+				},
+				{
+					"color": "#000000",
+					"name": "Sky 1 Night",
+					"slug": "sky-1-night"
+				},
+				{
+					"color": "#12171c",
+					"name": "Sky 2 Night",
+					"slug": "sky-2-night"
 				}
 			]
 		},
