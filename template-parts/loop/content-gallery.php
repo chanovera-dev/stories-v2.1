@@ -40,7 +40,7 @@
                 <div class="gallery-navigation" style="display: flex; align-items: center;">
                     <button class="gallery-prev btn-pagination small-pagination"
                         aria-label="Foto anterior"><?= stories_get_icon('backward'); ?></button>
-                    <div class="bullets"></div>
+                    <div class="loop-gallery-bullets"></div>
                     <button class="gallery-next btn-pagination small-pagination"
                         aria-label="Foto siguiente"><?= stories_get_icon('forward'); ?></button>
                 </div>
