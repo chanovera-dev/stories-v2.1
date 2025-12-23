@@ -124,6 +124,7 @@ add_action('save_post_property', function() {
     delete_transient('property_construction_range');
     delete_transient('property_land_range');
     delete_transient('existing_property_types');
+    delete_transient('existing_operation_types');
 });
 
 /**
@@ -163,6 +164,35 @@ function get_existing_property_types() {
     set_transient('existing_property_types', $types, DAY_IN_SECONDS);
     
     return $types;
+}
+
+/**
+ * Retrieves the unique operation types currently used in the database.
+ *
+ * @return array List of operation type keys (e.g., 'sale', 'rental').
+ */
+function get_existing_operation_types() {
+    $ops = get_transient('existing_operation_types');
+    
+    if ($ops !== false) {
+        return $ops;
+    }
+
+    global $wpdb;
+    $results = $wpdb->get_col(
+        "SELECT DISTINCT pm.meta_value 
+        FROM {$wpdb->postmeta} pm
+        INNER JOIN {$wpdb->posts} p ON pm.post_id = p.ID
+        WHERE pm.meta_key = 'eb_operation'
+        AND p.post_type = 'property'
+        AND p.post_status = 'publish'"
+    );
+
+    $ops = array_filter((array)$results);
+    
+    set_transient('existing_operation_types', $ops, DAY_IN_SECONDS);
+    
+    return $ops;
 }
 
 /**

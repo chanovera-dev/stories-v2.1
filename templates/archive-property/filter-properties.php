@@ -7,122 +7,136 @@
         </div>
 
         <!-- Operation -->
-        <fieldset class="menu-flex">
-            <legend class="screen-reader-text" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;"><?php esc_html_e('Tipo de Operación', 'stories'); ?></legend>
-            <div class="filter-property"><input type="checkbox" id="op-sale" name="operation[]" value="sale"><label for="op-sale"><?= stories_get_icon('sale'); esc_html_e('Venta', 'stories'); ?></label></div>
-            <div class="filter-property"><input type="checkbox" id="op-rent" name="operation[]" value="rental"><label for="op-rent"><?= stories_get_icon('rent'); esc_html_e('Renta', 'stories'); ?></label></div>
-        </fieldset>
+        <?php $operation_types = get_query_var('operation_types', []); ?>
+        <?php if (!empty($operation_types)) : ?>
+            <fieldset class="menu-flex">
+                <legend class="screen-reader-text" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;"><?php esc_html_e('Tipo de Operación', 'stories'); ?></legend>
+                <div class="menu-flex--operation">
+                    <?php if (in_array('sale', $operation_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="op-sale" name="operation[]" value="sale"><label for="op-sale"><?= stories_get_icon('sale'); esc_html_e('Venta', 'stories'); ?></label></div>
+                    <?php endif; ?>
+                    <?php if (in_array('rental', $operation_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="op-rent" name="operation[]" value="rental"><label for="op-rent"><?= stories_get_icon('rent'); esc_html_e('Renta', 'stories'); ?></label></div>
+                    <?php endif; ?>
+                </div>
+            </fieldset>
+        <?php endif; ?>
 
         <!-- Type -->
         <?php $existing_types = get_query_var('property_types', []); ?>
-        <fieldset class="menu-flex">
-            <legend class="screen-reader-text" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;"><?php esc_html_e('Tipo de Propiedad', 'stories'); ?></legend>
-            <div class="menu-flex--type">
-                <?php if (in_array('house', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-casa" name="type[]" value="house"><label for="type-casa"><?= stories_get_icon('home'); esc_html_e('Casa', 'stories'); ?></label></div>
-                <?php endif; ?>
+        <?php if (!empty($existing_types)) : ?>
+            <fieldset class="menu-flex">
+                <legend class="screen-reader-text" style="position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;"><?php esc_html_e('Tipo de Propiedad', 'stories'); ?></legend>
+                <div class="menu-flex--type">
+                    <?php if (in_array('house', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-casa" name="type[]" value="house"><label for="type-casa"><?= stories_get_icon('home'); esc_html_e('Casa', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('bedroom', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-bedroom" name="type[]" value="bedroom"><label for="type-bedroom"><?= stories_get_icon('bedroom'); esc_html_e('Habitación', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('bedroom', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-bedroom" name="type[]" value="bedroom"><label for="type-bedroom"><?= stories_get_icon('bedroom'); esc_html_e('Habitación', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('house_with_land_use', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-house-with-land-use" name="type[]" value="house_with_land_use"><label for="type-house-with-land-use"><?= stories_get_icon('home'); esc_html_e('Casa c/uso de suelo', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('house_with_land_use', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-house-with-land-use" name="type[]" value="house_with_land_use"><label for="type-house-with-land-use"><?= stories_get_icon('home'); esc_html_e('Casa c/uso de suelo', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('apartment', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-apartment" name="type[]" value="apartment"><label for="type-apartment"><?= stories_get_icon('construction'); esc_html_e('Departamento', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('apartment', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-apartment" name="type[]" value="apartment"><label for="type-apartment"><?= stories_get_icon('construction'); esc_html_e('Departamento', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('house_in_condo', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-house-in-condo" name="type[]" value="house_in_condo"><label for="type-house-in-condo"><?= stories_get_icon('home'); esc_html_e('Condominio', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('house_in_condo', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-house-in-condo" name="type[]" value="house_in_condo"><label for="type-house-in-condo"><?= stories_get_icon('home'); esc_html_e('Condominio', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('land', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-land" name="type[]" value="land"><label for="type-land"><?= stories_get_icon('garden'); esc_html_e('Terreno', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('land', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-land" name="type[]" value="land"><label for="type-land"><?= stories_get_icon('garden'); esc_html_e('Terreno', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('lot', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-lot" name="type[]" value="lot"><label for="type-lot"><?= stories_get_icon('garden'); esc_html_e('Lote', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('lot', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-lot" name="type[]" value="lot"><label for="type-lot"><?= stories_get_icon('garden'); esc_html_e('Lote', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('commercial', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-commercial" name="type[]" value="commercial"><label for="type-commercial"><?= stories_get_icon('store'); esc_html_e('Local comercial', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('commercial', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-commercial" name="type[]" value="commercial"><label for="type-commercial"><?= stories_get_icon('store'); esc_html_e('Local comercial', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('office', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-office" name="type[]" value="office"><label for="type-office"><?= stories_get_icon('home'); esc_html_e('Oficina', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('office', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-office" name="type[]" value="office"><label for="type-office"><?= stories_get_icon('home'); esc_html_e('Oficina', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('doctor_office', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-doctor-office" name="type[]" value="doctor_office"><label for="type-doctor-office"><?= stories_get_icon('home'); esc_html_e('Consultorio', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('doctor_office', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-doctor-office" name="type[]" value="doctor_office"><label for="type-doctor-office"><?= stories_get_icon('home'); esc_html_e('Consultorio', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('warehouse', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-warehouse" name="type[]" value="warehouse"><label for="type-warehouse"><?= stories_get_icon('warehouse'); esc_html_e('Bodega', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('warehouse', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-warehouse" name="type[]" value="warehouse"><label for="type-warehouse"><?= stories_get_icon('warehouse'); esc_html_e('Bodega', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('industrial_warehouse', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-industrial-warehouse" name="type[]" value="industrial_warehouse"><label for="type-industrial-warehouse"><?= stories_get_icon('warehouse'); esc_html_e('Nave', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('industrial_warehouse', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-industrial-warehouse" name="type[]" value="industrial_warehouse"><label for="type-industrial-warehouse"><?= stories_get_icon('warehouse'); esc_html_e('Nave', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('building', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-building" name="type[]" value="building"><label for="type-building"><?= stories_get_icon('construction'); esc_html_e('Edificio', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('building', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-building" name="type[]" value="building"><label for="type-building"><?= stories_get_icon('construction'); esc_html_e('Edificio', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('penthouse', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-penthouse" name="type[]" value="penthouse"><label for="type-penthouse"><?= stories_get_icon('construction'); esc_html_e('PH', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('penthouse', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-penthouse" name="type[]" value="penthouse"><label for="type-penthouse"><?= stories_get_icon('construction'); esc_html_e('PH', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('loft', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-loft" name="type[]" value="loft"><label for="type-loft"><?= stories_get_icon('construction'); esc_html_e('Loft', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('loft', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-loft" name="type[]" value="loft"><label for="type-loft"><?= stories_get_icon('construction'); esc_html_e('Loft', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('villa', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-villa" name="type[]" value="villa"><label for="type-villa"><?= stories_get_icon('home'); esc_html_e('Villa', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('villa', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-villa" name="type[]" value="villa"><label for="type-villa"><?= stories_get_icon('home'); esc_html_e('Villa', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('ranch', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-ranch" name="type[]" value="ranch"><label for="type-ranch"><?= stories_get_icon('garden'); esc_html_e('Rancho', 'stories'); ?></label></div>
-                <?php endif; ?>
+                    <?php if (in_array('ranch', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-ranch" name="type[]" value="ranch"><label for="type-ranch"><?= stories_get_icon('garden'); esc_html_e('Rancho', 'stories'); ?></label></div>
+                    <?php endif; ?>
 
-                <?php if (in_array('other', $existing_types)) : ?>
-                    <div class="filter-property"><input type="checkbox" id="type-other" name="type[]" value="other"><label for="type-other"><?= stories_get_icon('home'); esc_html_e('Otro', 'stories'); ?></label></div>
-                <?php endif; ?>
-            </div>
-        </fieldset>
+                    <?php if (in_array('other', $existing_types)) : ?>
+                        <div class="filter-property"><input type="checkbox" id="type-other" name="type[]" value="other"><label for="type-other"><?= stories_get_icon('home'); esc_html_e('Otro', 'stories'); ?></label></div>
+                    <?php endif; ?>
+                </div>
+            </fieldset>
+        <?php endif; ?>
 
         <ul class="filter-navigation menu">
             <!-- Location -->
-            <li class="menu-item-has-children filter state">
-                <button class="btn hollow button-for-submenu" type="button" aria-expanded="false" aria-label="<?php esc_attr_e('Abrir submenú para ubicación', 'stories'); ?>">
-                    <?php esc_html_e('Ubicación', 'stories'); ?>
-                    <?= stories_get_icon('chevron-down'); ?>
-                </button>
-                <ul class="sub-menu">
-                     
-                    <?php foreach ($locations as $state => $cities): 
-                        $state_id = 'state-' . sanitize_title($state);
-                    ?>
-                        <li class="menu-item-has-children">
-                            <div class="btn hollow wrapper-for-title">
-                                <p class="checkbox-filter-properties"><input type="checkbox" id="<?php echo esc_attr($state_id); ?>" name="state[]" value="<?php echo esc_attr($state); ?>"><label for="<?php echo esc_attr($state_id); ?>"><?php echo esc_html($state); ?></label></p>
-                                <button class="button-for-submenu" type="button" aria-expanded="false" aria-label="<?php printf(esc_attr__('Abrir submenú para %s', 'stories'), $state); ?>">
-                                    <?= stories_get_icon('plus-circle'); ?>
-                                </button>
-                            </div>
-                            <ul class="sub-menu">
-                                 
-                                <?php foreach ($cities as $city): 
-                                    $city_id = 'city-' . sanitize_title($city);
-                                ?>
-                                    <li><p class="checkbox-filter-properties"><input type="checkbox" id="<?php echo esc_attr($city_id); ?>" name="city[]" value="<?php echo esc_attr($city); ?>"><label for="<?php echo esc_attr($city_id); ?>"><?php echo esc_html($city); ?></label></p></li>
-                                <?php endforeach; ?>
-                            </ul>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </li>
+            <?php $locations = get_query_var('locations', []); ?>
+            <?php if (!empty($locations)) : ?>
+                <li class="menu-item-has-children filter state">
+                    <button class="btn hollow button-for-submenu" type="button" aria-expanded="false" aria-label="<?php esc_attr_e('Abrir submenú para ubicación', 'stories'); ?>">
+                        <?php esc_html_e('Ubicación', 'stories'); ?>
+                        <?= stories_get_icon('chevron-down'); ?>
+                    </button>
+                    <ul class="sub-menu">
+                        
+                        <?php foreach ($locations as $state => $cities): 
+                            $state_id = 'state-' . sanitize_title($state);
+                        ?>
+                            <li class="menu-item-has-children">
+                                <div class="btn hollow wrapper-for-title">
+                                    <p class="checkbox-filter-properties"><input type="checkbox" id="<?php echo esc_attr($state_id); ?>" name="state[]" value="<?php echo esc_attr($state); ?>"><label for="<?php echo esc_attr($state_id); ?>"><?php echo esc_html($state); ?></label></p>
+                                    <button class="button-for-submenu" type="button" aria-expanded="false" aria-label="<?php printf(esc_attr__('Abrir submenú para %s', 'stories'), $state); ?>">
+                                        <?= stories_get_icon('plus-circle'); ?>
+                                    </button>
+                                </div>
+                                <ul class="sub-menu">
+                                    
+                                    <?php foreach ($cities as $city): 
+                                        $city_id = 'city-' . sanitize_title($city);
+                                    ?>
+                                        <li><p class="checkbox-filter-properties"><input type="checkbox" id="<?php echo esc_attr($city_id); ?>" name="city[]" value="<?php echo esc_attr($city); ?>"><label for="<?php echo esc_attr($city_id); ?>"><?php echo esc_html($city); ?></label></p></li>
+                                    <?php endforeach; ?>
+                                </ul>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </li>
+            <?php endif; ?>
 
             <!-- Rooms -->
             <li class="menu-item-has-children filter rooms">

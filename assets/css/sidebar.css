@@ -139,105 +139,95 @@
 
                     & .menu-flex {
                         position: relative;
-                        display: flex;
                         height: 54px;
                         gap: .2rem;
-                        padding: .5rem;
                         background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
                         border: none;
                         overflow: hidden;
 
-                        & .menu-flex--type {
+                        & :is(.menu-flex--type, .menu-flex--operation) {
                             position: absolute;
-                            top: 5px;
-                            left: 5px;
+                            top: 0;
+                            left: 0;
                             width: 100%;
                             height: 100%;
                             display: flex;
                             gap: .2rem;
-                            padding: .2rem;
+                            padding: .5rem;
                             overflow-x: scroll;
-                            padding-right: 13px;
+                            padding-right: 1rem;
 
                             & .filter-property {
-                                flex: auto;
-                            }
-                        }
+                                position: relative;
 
-                        & .filter-property {
-                            position: relative;
-                            flex: 1;
+                                &:hover {
 
-                            &:hover {
+                                    & [type="checkbox"]:not(:checked)+label,
+                                    & [type="checkbox"]:checked+label {
+                                        color: light-dark(var(--wp--preset--color--contrast), var(--wp--preset--color--base));
+                                    }
+                                }
 
                                 & [type="checkbox"]:not(:checked)+label,
                                 & [type="checkbox"]:checked+label {
+                                    padding: .2rem;
+                                    height: 100%;
+                                    z-index: 0;
+                                    color: light-dark(#00000078, #ffffff78);
+                                    font-size: var(--wp--preset--font-size--small);
+                                    display: inline-flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    gap: .5rem;
+                                    transition: color .3s ease;
+
+                                    & svg {
+                                        position: relative;
+                                        bottom: .2rem;
+                                    }
+                                }
+
+                                & [type="checkbox"]:not(:checked)+label,
+                                & [type="checkbox"]:checked+label {
+                                    padding: 0 1rem;
+                                    height: 36px;
+                                    text-wrap: nowrap;
+                                }
+
+                                & [type="checkbox"]:checked+label {
                                     color: light-dark(var(--wp--preset--color--contrast), var(--wp--preset--color--base));
                                 }
-                            }
 
-                            & [type="checkbox"]:not(:checked)+label,
-                            & [type="checkbox"]:checked+label {
-                                padding: .2rem;
-                                width: 100%;
-                                height: 100%;
-                                z-index: 0;
-                                color: light-dark(#00000078, #ffffff78);
-                                font-size: var(--wp--preset--font-size--small);
-                                display: flex;
-                                align-items: center;
-                                justify-content: center;
-                                gap: .5rem;
-                                transition: color .3s ease;
-
-                                & svg {
-                                    position: relative;
-                                    bottom: .2rem;
+                                & [type="checkbox"]:not(:checked)+label:before,
+                                & [type="checkbox"]:checked+label:before {
+                                    content: none;
                                 }
-                            }
 
-                            & [type="checkbox"]:not(:checked)+label,
-                            & [type="checkbox"]:checked+label {
-                                padding: 0 1rem;
-                                height: 36px;
-                                text-wrap: nowrap;
-                            }
+                                & [type="checkbox"]:not(:checked)+label:after,
+                                & [type="checkbox"]:checked+label:after {
+                                    top: 0;
+                                    left: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    z-index: -1;
+                                }
 
-                            & [type="checkbox"]:checked+label {
-                                color: light-dark(var(--wp--preset--color--contrast), var(--wp--preset--color--base));
-                            }
-
-                            & [type="checkbox"]:not(:checked)+label:before,
-                            & [type="checkbox"]:checked+label:before {
-                                content: none;
-                            }
-
-                            & [type="checkbox"]:not(:checked)+label:after,
-                            & [type="checkbox"]:checked+label:after {
-                                top: 0;
-                                left: 0;
-                                width: 100%;
-                                height: 100%;
-                                z-index: -1;
-                            }
-
-                            & [type="checkbox"]:checked+label:after {
-                                background-color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
-                                box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                                & [type="checkbox"]:checked+label:after {
+                                    background-color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
+                                    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+                                }
                             }
                         }
 
-                        &:has(.menu-flex--type) {
-                            &::after {
-                                position: absolute;
-                                content: '';
-                                bottom: 0;
-                                right: 0;
-                                width: 20%;
-                                height: 100%;
-                                background: linear-gradient(to left, light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night)) 0%, transparent 100%);
-                                z-index: 1;
-                            }
+                        &::after {
+                            position: absolute;
+                            content: '';
+                            bottom: 0;
+                            right: 0;
+                            width: 20%;
+                            height: 100%;
+                            background: linear-gradient(to left, light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night)) 0%, transparent 100%);
+                            z-index: 1;
                         }
                     }
 
