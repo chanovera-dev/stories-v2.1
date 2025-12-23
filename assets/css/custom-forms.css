@@ -73,6 +73,12 @@ textarea {
     height: 6rem;
 }
 
+/*
+ * =========================================================================
+ * BUTTONS
+ * =========================================================================
+ */
+
 .btn,
 #submit,
 .wpcf7-submit,
@@ -80,6 +86,7 @@ textarea {
     position: relative;
     display: inline-flex;
     align-items: center;
+    justify-content: space-between;
     font-family: var(--wp--preset--font-family--manrope);
     font-size: var(--wp--preset--font-size--medium);
     font-weight: 500;
@@ -133,15 +140,30 @@ textarea {
         }
     }
 
+    &.go-contact {
+        background-color: var(--wp--preset--color--green);
+        border-color: var(--wp--preset--color--green);
+        color: var(--wp--preset--color--base);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px, rgba(0, 0, 0, 0.15) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -2px 0px inset;
+        font-size: var(--wp--preset--font-size--small);
+        padding: .5rem .8rem;
+
+        & svg {
+            width: 13px;
+            height: 13px;
+        }
+    }
+
     &.hollow {
         background-color: transparent;
         border-color: transparent;
         color: var(--wp--preset--color--contrast);
+        background-image: none;
 
         &:hover {
             background-color: transparent;
             border-color: transparent;
-            color: var(--wp--preset--color--button);
+            color: var(--wp--preset--color--primary-strong);
         }
     }
 
@@ -158,3 +180,91 @@ textarea {
         }
     }
 }
+
+/*
+ * =========================================================================
+ * CHECKBOXS
+ * =========================================================================
+ */
+
+/* Base for label styling */
+input[type="checkbox"]:not(:checked),
+input[type="checkbox"]:checked {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    max-height: 54px;
+    opacity: 0;
+    z-index: 1;
+}
+
+input[type="checkbox"]:not(:checked)+label,
+input[type="checkbox"]:checked+label {
+    position: relative;
+    margin-bottom: 0;
+    padding-left: 1.5em;
+    font-size: 1.05em;
+    line-height: 1.7;
+    cursor: pointer;
+}
+
+/* checkbox aspect */
+input[type="checkbox"]:not(:checked)+label:before,
+input[type="checkbox"]:checked+label:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 5px;
+    width: 1em;
+    height: 1em;
+    border: 1px solid light-dark(#0000002c, #ffffff47);
+    transition: all 0.275s;
+}
+
+/* checked mark aspect */
+input[type="checkbox"]:not(:checked)+label:after,
+input[type="checkbox"]:checked+label:after {
+    content: "";
+    width: .6em;
+    height: .6em;
+    position: absolute;
+    top: 0.48em;
+    left: 0.2em;
+    background-color: light-dark(var(--wp--preset--color--primary-strong), var(--wp--preset--color--primary-strong));
+    transition: all 0.2s;
+}
+
+/* checked mark aspect changes */
+input[type="checkbox"]:not(:checked)+label:after {
+    opacity: 0;
+}
+
+input[type="checkbox"]:checked+label:after {
+    opacity: 1;
+}
+
+/* Disabled checkbox *
+[type="checkbox"]:disabled:not(:checked) + label:before,
+[type="checkbox"]:disabled:checked + label:before {
+  box-shadow: none;
+  border-color: #bbb;
+  background-color: #e9e9e9;
+}
+
+[type="checkbox"]:disabled:checked + label:after {
+  color: #777;
+}
+
+[type="checkbox"]:disabled + label {
+  color: #aaa;
+}
+
+/* Accessibility *
+[type="checkbox"]:checked:focus + label:before,
+[type="checkbox"]:not(:checked):focus + label:before {
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1),
+    0 0 0 6px rgba(203, 34, 237, 0.2);
+}
+*/

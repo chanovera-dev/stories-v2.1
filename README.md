@@ -1,65 +1,67 @@
-# Stories V2.1 WordPress Theme
+# Stories V2.1 WordPress Theme - Real Estate Edition
 
-Stories V2.1 es un tema de WordPress moderno, minimalista y centrado en el contenido. Diseñado para ofrecer una experiencia de lectura inmersiva, cuenta con una arquitectura modular y optimizada.
+Stories V2.1 es un tema de WordPress moderno, minimalista y altamente especializado en el sector inmobiliario (**Real Estate**). Diseñado originalmente para una experiencia de lectura inmersiva, ha evolucionado para convertirse en una solución robusta para la gestión y despliegue de catálogos de propiedades.
 
-Ha sido creado como base para otros proyectos, enlazando otros archivos en functions.php para extenderlo, y de manera similar agregar nuevas plantillas dentro de las carpetas 'loop', 'page', 'single', 'templates', etc.
+Ha sido creado como una base sólida y flexible, permitiendo extender su funcionalidad mediante un sistema modular de archivos en `inc/` y plantillas personalizadas en carpetas como `loop`, `page`, `single`, y `templates`.
 
-## Características Principales
+## Especialización en Real Estate
 
-*   **Diseño "Mobile-First":** Maquetación responsiva utilizando CSS moderno (Nesting, Variables) y `theme.json`.
-*   **Modo noche activado por defecto:** El modo noche viene activado por defecto de manera automática de acuerdo con la configuración del sistema operativo del usuario.
-*   **Carga Condicional de Recursos:** JavaScript y CSS se cargan solo cuando son necesarios (lógica en `inc/core.php`), asegurando un rendimiento óptimo.
-*   **Formatos de Post Personalizados:** Soporte nativo y estilizado para:
-    *   Estándar
-    *   Minientradas (Asides)
-    *   Galerías (con Slider y Lightbox personalizados)
-    *   Imágenes (Dibujos)
-    *   Videos
-    *   Citas
-    *   Enlaces
-*   **Sistema de Iconos SVG:** Iconos integrados directamente en PHP para evitar cargas externas y peticiones HTTP adicionales, gestionados mediante `stories_get_icon()`.
-*   **Bloques Gutenberg Personalizados:**
-    *   **Galería:** Renderizado personalizado que transforma el bloque nativo en un slider interactivo.
-    *   **Búsqueda:** Formulario de búsqueda estilizado con iconos SVG.
-    *   **Últimas Entradas:** Filtrado avanzado para excluir ciertos formatos de "micro-contenido" (artículos del tipo 'aside', 'quote', 'link', 'image', 'video').
-    *   **Listas:** Estilos personalizados para categorías y archivos.
-*   **Navegación Avanzada:**
-    *   **Menú Compacto:** El menú principal se presenta siempre en modo compacto para dar mayor foco al contenido, pero su comportamiento se puede cambiar fácilmente con CSS.
-    *   Migas de pan (Breadcrumbs) dinámicas con lógica profunda para categorías, formatos y fechas.
-    *   Paginación numérica y navegación entre posts adyacentes.
-*   **SEO y Analítica:** Estructura semántica HTML5, soporte para subida de SVG y Google Tag Manager integrado.
-*   **Personalizador:** 
-    *   Opción para editar el Google Tag Manager directamente desde el personalizador de WordPress.
-    *   Opción para editar la "Biografía del Sitio" directamente desde el personalizador de WordPress.
+El tema incluye un motor dedicado para bienes raíces con capacidades avanzadas:
+
+*   **Integración con API de EasyBroker:** Sincronización completa de propiedades, incluyendo metadatos, descripciones enriquecidas y galerías de imágenes.
+*   **CPT Property:** Tipo de contenido personalizado (`property`) optimizado para listados inmobiliarios.
+*   **Dashboard Administrativo:** Panel de control personalizado dentro de WordPress que ofrece una vista panorámica del inventario:
+    *   Métricas de propiedades (publicadas, borradores, privadas).
+    *   Desglose por tipo de operación (Venta/Renta).
+    *   Estadísticas de inventario por tipo de propiedad y ubicación.
+    *   Estado y tiempo de la última sincronización con la API.
+*   **Filtrado AJAX de Alto Rendimiento:** Sistema de búsqueda y filtros en tiempo real que permite a los usuarios navegar por el catálogo por:
+    *   Ubicación (Estado y Ciudad).
+    *   Tipo de Operación (Venta / Renta).
+    *   Tipo de Propiedad (Casa, Departamento, Bodega, Terreno, etc.).
+    *   Rangos de Precio.
+    *   Dimensiones de Construcción y Terreno.
+*   **Categorías Dinámicas e Inteligentes:** El sistema analiza la base de datos y muestra en los filtros únicamente los tipos de propiedad que tienen inventario disponible, manteniendo la interfaz limpia.
+*   **Gestión de Galería Híbrida:** Unifica de forma transparente las imágenes sincronizadas desde EasyBroker con imágenes subidas localmente mediante ACF (Advanced Custom Fields), permitiendo personalización total de los visuales.
+*   **Botones de Contacto Automáticos:** Escaneo inteligente del contenido para detectar enlaces de WhatsApp, números telefónicos y correos electrónicos, convirtiéndolos automáticamente en botones de acción inmediata ("call-to-action") en las tarjetas de propiedad.
+*   **Normalización de Datos:** Motor interno de traducción y normalización que estandariza los datos de la API para garantizar la precisión en las búsquedas y la consistencia visual.
+
+## Características Generales
+
+*   **Diseño "Mobile-First":** Maquetación responsiva premium utilizando CSS moderno (Nesting, Variables) y `theme.json`.
+*   **Modo Noche Nativo:** Activado automáticamente según la configuración del sistema operativo del usuario.
+*   **Carga Condicional de Recursos:** JavaScript y CSS se cargan solo cuando son necesarios, eliminando el "bloating" y optimizando el Core Web Vitals.
+*   **Animaciones de Entrada:** Sistema `animate-in.js` para entradas fluidas de elementos al hacer scroll, optimizado para evitar "glitches" visuales.
+*   **Formatos de Post Personalizados:** Soporte para Asides, Galerías, Imágenes, Videos, Citas y Enlaces.
+*   **Sistema de Iconos SVG:** Iconos optimizados integrados directamente en el código para minimizar las peticiones HTTP.
+*   **Bloques Gutenberg Personalizados:** Incluye renderizado avanzado para galerías tipo slider y bloques de últimas entradas con filtrado por formato.
+*   **SEO y Analítica:** Estructura semántica HTML5 y Google Tag Manager configurable desde el personalizador.
 
 ## Estructura del Proyecto
 
 ```text
 stories-next/
-├── assets/             # Recursos estáticos (CSS, JS, Iconos, Imágenes)
-├── inc/                # Lógica modular del tema
-│   └── core.php        # Configuración principal, hooks, assets loader y filtros
-├── template-parts/     # Fragmentos de plantilla reutilizables
-│   ├── loop/           # Vistas para listas de posts
-│   ├── page/           # Vistas para páginas estáticas
-│   └── single/         # Vistas para entradas individuales
-├── templates/          # Plantillas lógicas (related posts, pagination, tags)
-├── functions.php       # Punto de entrada (carga inc/core.php)
-├── style.css           # Metadatos del tema y estilos base
-└── theme.json          # Configuración global de estilos para Gutenberg
+├── assets/                     # Recursos estáticos (CSS, JS, Iconos)
+├── inc/                        # Lógica modular
+│   ├── core.php                # Configuración principal y carga de assets
+│   ├── real-estate-tools.php   # Motor inmobiliario, lógica de filtros, panel de control de propiedades
+│   ├── easybroker-sync.php     # Integración con la API de EasyBroker
+├── template-parts/             # Fragmentos de plantilla reutilizables
+│   ├── loop/                   # Vistas para listas (incluye content-property.php)
+│   ├── page/                   # Vistas para páginas estáticas
+│   └── single/                 # Vistas para entradas individuales
+├── functions.php               # Punto de entrada de la lógica
+├── theme.json                  # Configuración global de diseño
+└── README.md                   # Documentación del tema
 ```
 
-## Instalación
+## Instalación y Configuración
 
-1.  Copia la carpeta del tema al directorio `/wp-content/themes/` de tu instalación de WordPress.
-2.  Accede al panel de administración > **Apariencia** > **Temas**.
-3.  Activa **Stories V2.1**.
-
-## Desarrollo y Personalización
-
-*   **Estilos:** Los estilos están modularizados en `assets/css/` y se cargan condicionalmente dependiendo de la vista (Home, Single, Archive, etc.). `wp-root.css` define las variables globales y tokens de diseño.
-*   **Scripts:** La interactividad (galerías, animaciones) se maneja mediante módulos JS en `assets/js/`.
-*   **Lógica:** Toda la funcionalidad crítica reside en `inc/core.php` para mantener `functions.php` limpio y ordenado.
+1.  Copia la carpeta del tema a `/wp-content/themes/`.
+2.  Activa el tema desde el panel de administración de WordPress.
+3.  Configure sus **API Keys de EasyBroker** desde el Personalizador de WordPress (**Apariencia > Personalizar > API Keys de EasyBroker**).
+4.  Utilice el menú de sincronización integrado en el escritorio para importar su inventario.
+5.  Acceda a **Propiedades > Dashboard** para ver el estado de su catálogo.
 
 ## Créditos
 

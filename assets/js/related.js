@@ -4,7 +4,7 @@ function createSlideshow({
     navigationSelector,
     prevSelector = ".slide-prev",
     nextSelector = ".slide-next",
-    bulletsSelector = ".bullets",
+    bulletsSelector = ".related-bullets",
     autoTime = 10000,
     gap = 16,
     useBullets = true
@@ -78,7 +78,7 @@ function createSlideshow({
             if (w < 600) itemsPerView = 1
             else if (w < 809) itemsPerView = 2
             else if (w < 1065) itemsPerView = 3
-            else itemsPerView = 3
+            else itemsPerView = 4
 
             updateSlideWidth()
             updateBullets()

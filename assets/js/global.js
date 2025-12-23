@@ -127,7 +127,7 @@ function closeCustomSearchform() {
 }
 
 function menuWithChildren() {
-    const menuItems = document.querySelectorAll('.menu-item-has-children')
+    const menuItems = document.querySelectorAll('#main-header .block .content .main-navigation .menu-item-has-children')
 
     menuItems.forEach(item => {
         item.addEventListener('click', function (e) {

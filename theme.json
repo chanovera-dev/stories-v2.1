@@ -197,6 +197,11 @@
 					"color": "#030f11",
 					"name": "Footer Background Night",
 					"slug": "footer-background-night"
+				},
+				{
+					"color": "#2c7b2c",
+					"name": "Green",
+					"slug": "green"
 				}
 			]
 		},

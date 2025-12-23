@@ -7,7 +7,7 @@ function initGallery(wrapper) {
     const gallery = wrapper.querySelector(".gallery")
     const originalSlides = Array.from(wrapper.querySelectorAll(".gallery > *"))
     const navigation = wrapper.querySelector(".gallery-navigation")
-    const bulletsWrapper = wrapper.querySelector(".bullets")
+    const bulletsWrapper = wrapper.querySelector(".loop-gallery-bullets")
 
     if (!gallery || originalSlides.length === 0 || !bulletsWrapper) return
 

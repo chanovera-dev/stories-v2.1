@@ -47,16 +47,8 @@
                 <?php
                 while ($related_posts->have_posts()):
                     $related_posts->the_post();
-                    $post_format = get_post_format();
-                    $part = 'archive';
 
-                    if ($post_format) {
-                        if (locate_template("template-parts/loop/content-{$post_format}.php")) {
-                            $part = $post_format;
-                        }
-                    }
-
-                    get_template_part('template-parts/loop/content', $part);
+                    get_template_part('template-parts/loop/content', 'property');
                 endwhile;
                 ?>
             </div>

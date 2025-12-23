@@ -38,6 +38,8 @@ if (!defined('STORIES_VERSION')) {
  */
 $inc_files = array(
     'core' => 'inc/core.php',
+    'easybroker-sync' => 'inc/easybroker-sync.php',
+    'real-estate-tools' => 'inc/real-estate-tools.php',
 );
 
 foreach ($inc_files as $key => $relative_path) {

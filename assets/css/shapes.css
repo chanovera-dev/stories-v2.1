@@ -114,6 +114,18 @@ body {
                     }
                 }
             }
+
+            & .location {
+                position: absolute;
+                bottom: calc(64px + 1rem);
+                left: 50%;
+                transform: translateX(-50%);
+                z-index: 1;
+                width: fit-content;
+                max-width: calc(100% - 3rem);
+                display: inline;
+                overflow: hidden;
+            }
         }
 
         &:not(:has(.post-body__header)) {
@@ -132,6 +144,24 @@ body {
 
             &:not(:has(.post--excerpt)) {
                 grid-template-rows: 1fr auto;
+
+                &:has(.price) {
+                    grid-template-rows: 1fr auto;
+                    grid-template-columns: auto 1fr;
+
+                    & .post--permalink {
+                        grid-column: 1 / -1;
+                    }
+
+                    & .date {
+                        grid-column: 1 / 2;
+                        grid-row: 2 / 3;
+                    }
+
+                    & .price {
+                        text-align: right;
+                    }
+                }
             }
 
             & .post--permalink {
@@ -175,7 +205,7 @@ body {
             position: relative;
             padding-left: .5rem;
 
-            &:has(.post--tags .post-tag) {
+            &:has(.post--tags .post-tag, .post--metadata .metadata-list) {
                 border-top: .063rem dashed var(--wp--preset--color--accent-6);
             }
 
@@ -215,6 +245,90 @@ body {
                         light-dark(var(--wp--preset--color--background), var(--wp--preset--color--background-night)) 0%,
                         transparent 100%);
                 z-index: 1;
+            }
+
+            &:has(.container) {
+                padding: 0;
+                padding-left: .5rem;
+
+                &:hover .post--metadata::-webkit-scrollbar-thumb {
+                    background-color: rgba(0, 0, 0, .3);
+                }
+
+                & .post--metadata {
+                    flex: 1;
+                    position: relative;
+                    height: 48px;
+                    overflow-x: scroll;
+                    scrollbar-gutter: stable;
+
+                    &::-webkit-scrollbar {
+                        height: .375rem;
+                        background: transparent;
+                    }
+
+                    &::-webkit-scrollbar-thumb {
+                        background-color: transparent;
+                        transition: background-color .3s ease;
+                    }
+
+                    & ul {
+                        padding-left: 0;
+                        padding-right: 2rem;
+                        list-style: none;
+                        display: flex;
+                        align-items: center;
+                        position: absolute;
+                        top: .7rem;
+                        left: 0;
+
+                        & li {
+                            text-wrap: nowrap;
+                            white-space: nowrap;
+
+                            & svg {
+                                margin-right: .5rem;
+                            }
+
+                            &:not(:last-child) {
+                                margin-right: 1rem;
+                            }
+                        }
+                    }
+                }
+
+                &:has(.container .btn) {
+                    padding-right: .5rem;
+
+                    & .container {
+                        position: relative;
+
+                        &::before {
+                            position: absolute;
+                            content: '';
+                            bottom: 0;
+                            left: -47px;
+                            width: 47px;
+                            height: 100%;
+                            background: linear-gradient(to left,
+                                    light-dark(var(--wp--preset--color--background), var(--wp--preset--color--background-night)) 0%,
+                                    transparent 100%);
+                            z-index: 1;
+                        }
+
+                        .btn {
+                            height: 30px;
+
+                            &:not(:last-child) {
+                                margin-right: .25rem;
+                            }
+                        }
+                    }
+
+                    &::after {
+                        content: none;
+                    }
+                }
             }
         }
     }
@@ -319,7 +433,7 @@ body {
     }
 }
 
-& .bullets {
+:is(.loop-gallery-bullets, .related-bullets) {
     color: var(--wp--preset--color--bullet-active);
 
     & .bullet {
@@ -339,6 +453,10 @@ body {
             outline: none;
             background-color: var(--wp--preset--color--focus);
         }
+    }
+
+    &:has(svg) {
+        color: var(--wp--preset--color--green);
     }
 }
 
@@ -471,16 +589,6 @@ body {
     border-radius: 13px;
 }
 
-.main-navigation {
-    & .menu {
-        & li {
-            &.item-has-children {
-                & .sub-menu {}
-            }
-        }
-    }
-}
-
 .post-tag,
 .btn-pagination.small-pagination,
 .page-numbers,
@@ -495,14 +603,42 @@ select,
 .slide .attachment-loop-thumbnail,
 .latest-post-thumbnail-wrapper .wp-post-image,
 .post-gallery-thumb img,
-.post--author .avatar {
+.post--author .avatar,
+.properties--filter .property-filter-form .filter-navigation.menu>.menu-item-has-children>.sub-menu,
+.menu-flex {
     border-radius: .5rem;
 }
 
 #searchsubmit,
 .stories-block-search__button,
-.main-navigation ul li a {
+.main-navigation ul li a,
+.properties--filter ul li .number-input-wrapper button,
+.properties--filter ul li p.checkbox-filter-properties {
     border-radius: 6px;
+}
+
+input[type="checkbox"]:not(:checked)+label:before,
+input[type="checkbox"]:checked+label:before {
+    border-radius: 4px;
+}
+
+input[type="checkbox"]:not(:checked)+label:after,
+input[type="checkbox"]:checked+label:after {
+    border-radius: 1px;
+}
+
+.properties--filter {
+    & .property-filter-form {
+        & .menu-flex {
+            & .filter-property {
+
+                & [type="checkbox"]:not(:checked)+label:after,
+                & [type="checkbox"]:checked+label:after {
+                    border-radius: .25rem;
+                }
+            }
+        }
+    }
 }
 
 body.is-chromium {
@@ -550,16 +686,6 @@ body.is-chromium {
         corner-shape: squircle;
     }
 
-    .main-navigation {
-        & .menu {
-            & li {
-                &.item-has-children {
-                    & .sub-menu {}
-                }
-            }
-        }
-    }
-
     .post-tag,
     .btn-pagination.small-pagination,
     .page-numbers,
@@ -574,15 +700,46 @@ body.is-chromium {
     .slide .attachment-loop-thumbnail,
     .latest-post-thumbnail-wrapper .wp-post-image,
     .post-gallery-thumb img,
-    .post--author .avatar {
+    .post--author .avatar,
+    .properties--filter .property-filter-form .filter-navigation.menu>.menu-item-has-children>.sub-menu,
+    .menu-flex {
         border-radius: 1.3rem;
         corner-shape: squircle;
     }
 
     & #searchsubmit,
     .stories-block-search__button,
-    .main-navigation ul li a {
+    .main-navigation ul li a,
+    .properties--filter ul li .number-input-wrapper button,
+    .properties--filter ul li p.checkbox-filter-properties {
         border-radius: 18px;
         corner-shape: squircle;
+    }
+
+    & input[type="checkbox"]:not(:checked)+label:before,
+    & input[type="checkbox"]:checked+label:before {
+        border-radius: .5rem;
+        corner-shape: squircle;
+    }
+
+    & input[type="checkbox"]:not(:checked)+label:after,
+    & input[type="checkbox"]:checked+label:after {
+        border-radius: 6px;
+        corner-shape: squircle;
+    }
+
+    & .properties--filter {
+        & .property-filter-form {
+            & .menu-flex {
+                & .filter-property {
+
+                    & [type="checkbox"]:not(:checked)+label:after,
+                    & [type="checkbox"]:checked+label:after {
+                        border-radius: .5rem;
+                        corner-shape: squircle;
+                    }
+                }
+            }
+        }
     }
 }
