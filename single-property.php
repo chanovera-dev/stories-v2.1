@@ -37,6 +37,9 @@ while ( have_posts() ) : the_post();
                 <div class="property-data--wrapper">
                     <?php the_title( '<h1 class="property-title">', '</h1>' ); ?>
                     <p class="property--operation post-tag small"><?php echo $operation === 'sale' ? 'En venta' : ( $operation === 'rental' ? 'En renta' : '' ); ?></p>
+                    <span class="excerpt">
+                        <?php the_excerpt(); ?>
+                    </span>
                     <h2 class="property--price">
                         <?php 
                             // Extract numeric price for formatting

@@ -1355,6 +1355,13 @@ function stories_process_manual_property_save($post_id) {
     if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
     if (wp_is_post_revision($post_id)) return;
 
+    // 0. Auto-generate ID if empty (for local properties)
+    $existing_id = get_post_meta($post_id, 'eb_public_id', true);
+    if (empty($existing_id)) {
+        $new_id = 'LOC-' . $post_id;
+        update_post_meta($post_id, 'eb_public_id', $new_id);
+    }
+
     // 1. Convert and save numeric price (eb_price_num) for filtering
     $price_raw = get_post_meta($post_id, 'eb_price', true);
     if (!empty($price_raw)) {
