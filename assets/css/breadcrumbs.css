@@ -1,4 +1,4 @@
-:is(.home, .blog, .search, .archive) {
+:is(.home, .blog, .search, .archive, .single-property) {
     & .site-main {
         & .block.breadcrumbs--wrapper {
             background-color: light-dark(var(--wp--preset--color--bullet), var(--wp--preset--color--bullet-night));

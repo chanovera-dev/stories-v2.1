@@ -6,7 +6,10 @@ function postGalleries() {
         initialized.add(wrapper)
 
         const gallery = wrapper.querySelector(".post-gallery")
-        const slides = Array.from(gallery.querySelectorAll(".post-gallery-slide"))
+        const originalSlides = Array.from(gallery.querySelectorAll(".post-gallery-slide:not(.is-clone)"))
+        // Remove existing clones
+        gallery.querySelectorAll(".post-gallery-slide.is-clone").forEach(el => el.remove())
+        const slides = originalSlides
         const thumbsWrapper = wrapper.querySelector(".post-gallery-thumbs")
         const prevBtn = wrapper.querySelector(".btn-pagination:first-of-type")
         const nextBtn = wrapper.querySelector(".btn-pagination:last-of-type")
@@ -15,6 +18,8 @@ function postGalleries() {
 
         const firstClone = slides[0].cloneNode(true)
         const lastClone = slides[slides.length - 1].cloneNode(true)
+        firstClone.classList.add("is-clone")
+        lastClone.classList.add("is-clone")
         gallery.prepend(lastClone)
         gallery.append(firstClone)
 

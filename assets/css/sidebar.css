@@ -158,6 +158,10 @@
                             padding: .2rem;
                             overflow-x: scroll;
                             padding-right: 13px;
+
+                            & .filter-property {
+                                flex: auto;
+                            }
                         }
 
                         & .filter-property {

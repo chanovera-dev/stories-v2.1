@@ -130,11 +130,9 @@ function createSlideshow({
                 slideshow.style.transition = "none"
 
                 const first = slides[0]
-                const clone = first.cloneNode(true)
-                clone.classList.remove("animate-in")
+                first.classList.remove("animate-in")
 
-                slideshow.appendChild(clone)
-                slideshow.removeChild(first)
+                slideshow.appendChild(first)
 
                 slideshow.style.transform = `translateX(0)`
 
@@ -162,11 +160,9 @@ function createSlideshow({
             slideshow.style.transition = "none"
 
             const last = slides[slides.length - 1]
-            const clone = last.cloneNode(true)
+            last.classList.remove("animate-in")
 
-            slideshow.insertBefore(clone, slides[0])
-            clone.classList.remove("animate-in")
-            slideshow.removeChild(last)
+            slideshow.insertBefore(last, slides[0])
 
             slides = Array.from(slideshow.children)
 
@@ -176,7 +172,7 @@ function createSlideshow({
                 slideshow.style.transition = "all .5s ease-in-out"
                 slideshow.style.transform = `translateX(0)`
 
-                setTimeout(() => clone.classList.add("animate-in"), 500)
+                setTimeout(() => last.classList.add("animate-in"), 500)
             })
 
             updateSlideWidth()

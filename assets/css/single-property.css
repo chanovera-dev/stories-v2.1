@@ -212,7 +212,7 @@ body.is-chromium {
             }
 
             & .block.posts--body.container--related-posts {
-                background-color: light-dark(var(--wp--preset--color--base), var(--base-dark));
+                background-color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
 
                 &.container--related-posts {
                     & .content {
