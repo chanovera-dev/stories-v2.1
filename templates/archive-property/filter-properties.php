@@ -3,7 +3,7 @@
     <form class="property-filter-form" id="property-filters">
         <!-- Search -->
         <div class="filter">
-            <input type="text" id="filter-search" name="search" aria-label="<?php esc_attr_e('Palabras clave', 'stories'); ?>" placeholder="<?php esc_html_e('Palabras clave', 'stories'); ?>">
+            <input type="text" id="filter-search" name="search" aria-label="<?php esc_attr_e('Palabras clave', 'stories'); ?>" placeholder="<?php esc_html_e('Ciudad, estado, tipo, etc...', 'stories'); ?>">
         </div>
 
         <!-- Operation -->
