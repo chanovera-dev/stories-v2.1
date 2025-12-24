@@ -1,4 +1,4 @@
-<article id="post-<?php the_ID(); ?>" <?php post_class(['post', 'animate-in']); ?> data-id="<?php echo get_the_ID(); ?>">
+<article id="post-<?php the_ID(); ?>" <?php post_class('post'); ?> data-id="<?php echo get_the_ID(); ?>">
     <div class="post-body">
         <?php 
             $property_data = stories_get_property_data();

@@ -1094,6 +1094,8 @@ function properties_templates() {
         stories_enqueue_style( 'breadcrumbs', $a['css']['breadcrumbs'] );
         stories_enqueue_style( 'sidebar', $a['css']['sidebar'] );
         stories_enqueue_style( 'posts-styles', $a['css']['posts-styles'] );
+
+        stories_enqueue_script( 'animate-in', $a['js']['animate-in'] );
         stories_enqueue_script( 'loop-gallery', $a['js']['loop-gallery'] );
         stories_enqueue_style( 'pagination', $a['css']['pagination'] );
         stories_enqueue_script( 'filters', $a['js']['filters'] );

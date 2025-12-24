@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             // reattach handlers
             bindPaginationLinks();
 
+            // Re-run animate-in for new properties
+            if (typeof animateIn === 'function') {
+                animateIn('.post');
+            }
+
             // update URL
             if (pushState) {
                 const url = new URL(window.location);
@@ -123,15 +128,9 @@ document.addEventListener('DOMContentLoaded', () => {
         fetchProperties(page, false);
     });
 
-    // Initial load: bind listeners if server-side items exist and no filters are present, else fetch.
-    const urlParams = new URLSearchParams(window.location.search);
-    const hasFilters = Array.from(urlParams.keys()).some(key => key !== 'paged');
-
-    if (results.children.length > 0 && !hasFilters) {
-        bindPaginationLinks();
-    } else {
-        fetchProperties(currentPage, false);
-    }
+    // Initial load via AJAX: if you rendered server-side you may skip this;
+    // here we always fetch so pagination markup is consistent with JS.
+    fetchProperties(currentPage, false);
 });
 
 function togglePropertiesSidebar() {
