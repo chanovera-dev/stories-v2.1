@@ -64,7 +64,7 @@
                 <button id="related-products--backward-button" class="slide-prev btn-pagination small-pagination">
                     <?= stories_get_icon('backward'); ?>
                 </button>
-                <div class="bullets"></div>
+                <div class="related-bullets"></div>
                 <button id="related-products--forward-button" class="slide-next btn-pagination small-pagination">
                     <?= stories_get_icon('forward'); ?>
                 </button>

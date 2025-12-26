@@ -319,7 +319,7 @@ body {
     }
 }
 
-& .bullets {
+& :is(.loop-gallery-bullets, .related-bullets) {
     color: var(--wp--preset--color--bullet-active);
 
     & .bullet {

@@ -4,7 +4,7 @@ function createSlideshow({
     navigationSelector,
     prevSelector = ".slide-prev",
     nextSelector = ".slide-next",
-    bulletsSelector = ".bullets",
+    bulletsSelector = ".related-bullets",
     autoTime = 10000,
     gap = 16,
     useBullets = true
@@ -41,9 +41,6 @@ function createSlideshow({
         let autoInterval = null
         let firstLoad = true
 
-        // -------------------------------
-        // BULLETS
-        // -------------------------------
         function createBullets() {
             if (!useBullets || !bulletsContainer) return
             bulletsContainer.innerHTML = ""
@@ -69,16 +66,13 @@ function createSlideshow({
             })
         }
 
-        // -------------------------------
-        // RESPONSIVE
-        // -------------------------------
         function updateItemsPerView() {
-            const w = window.innerWidth  // ancho de ventana
+            const w = window.innerWidth
 
             if (w < 600) itemsPerView = 1
             else if (w < 809) itemsPerView = 2
             else if (w < 1065) itemsPerView = 3
-            else itemsPerView = 3
+            else itemsPerView = 4
 
             updateSlideWidth()
             updateBullets()
@@ -99,15 +93,10 @@ function createSlideshow({
             })
         }
 
-        // Ejecutar al cargar
         updateItemsPerView()
 
-        // Escuchar cambios de tamaño de ventana
         window.addEventListener("resize", updateItemsPerView)
 
-        // -------------------------------
-        // ANIMACIONES
-        // -------------------------------
         function updateAnimations() {
             if (firstLoad) return
 
@@ -119,9 +108,6 @@ function createSlideshow({
             }
         }
 
-        // -------------------------------
-        // NEXT
-        // -------------------------------
         function next() {
             slideshow.style.transition = "all .5s ease-in-out"
             slideshow.style.transform = `translateX(-${slideWidth}px)`
@@ -130,11 +116,9 @@ function createSlideshow({
                 slideshow.style.transition = "none"
 
                 const first = slides[0]
-                const clone = first.cloneNode(true)
-                clone.classList.remove("animate-in")
+                first.classList.remove("animate-in")
 
-                slideshow.appendChild(clone)
-                slideshow.removeChild(first)
+                slideshow.appendChild(first)
 
                 slideshow.style.transform = `translateX(0)`
 
@@ -142,7 +126,6 @@ function createSlideshow({
                 updateSlideWidth()
                 updateBullets()
 
-                // slides.forEach(s => s.classList.remove("animate-in"))
                 void slideshow.offsetWidth
 
                 for (let i = 0; i < Math.min(itemsPerView, slides.length); i++) {
@@ -155,18 +138,13 @@ function createSlideshow({
             }, 500)
         }
 
-        // -------------------------------
-        // PREV
-        // -------------------------------
         function prev() {
             slideshow.style.transition = "none"
 
             const last = slides[slides.length - 1]
-            const clone = last.cloneNode(true)
+            last.classList.remove("animate-in")
 
-            slideshow.insertBefore(clone, slides[0])
-            clone.classList.remove("animate-in")
-            slideshow.removeChild(last)
+            slideshow.insertBefore(last, slides[0])
 
             slides = Array.from(slideshow.children)
 
@@ -176,7 +154,7 @@ function createSlideshow({
                 slideshow.style.transition = "all .5s ease-in-out"
                 slideshow.style.transform = `translateX(0)`
 
-                setTimeout(() => clone.classList.add("animate-in"), 500)
+                setTimeout(() => last.classList.add("animate-in"), 500)
             })
 
             updateSlideWidth()
@@ -187,9 +165,6 @@ function createSlideshow({
         if (navNext) navNext.addEventListener("click", next)
         if (navPrev) navPrev.addEventListener("click", prev)
 
-        // -------------------------------
-        // BULLETS → SALTO
-        // -------------------------------
         let bulletJumping = false
 
         function goToSlideById(targetId) {
@@ -216,9 +191,6 @@ function createSlideshow({
             )
         }
 
-        // -------------------------------
-        // AUTO SLIDE
-        // -------------------------------
         function startAuto() {
             stopAuto()
             autoInterval = setInterval(next, autoTime)
@@ -230,9 +202,6 @@ function createSlideshow({
         wrapper.addEventListener("mouseenter", stopAuto)
         wrapper.addEventListener("mouseleave", startAuto)
 
-        // -------------------------------
-        // TOUCH
-        // -------------------------------
         let touchStartX = 0
         let touchEndX = 0
         const SWIPE_THRESHOLD = 50
@@ -257,9 +226,6 @@ function createSlideshow({
             startAuto()
         })
 
-        // -------------------------------
-        // INIT
-        // -------------------------------
         updateItemsPerView()
 
         requestAnimationFrame(() => {

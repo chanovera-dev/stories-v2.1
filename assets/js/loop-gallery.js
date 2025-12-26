@@ -5,9 +5,11 @@ function initGallery(wrapper) {
     initializedGalleries.add(wrapper)
 
     const gallery = wrapper.querySelector(".gallery")
-    const originalSlides = Array.from(wrapper.querySelectorAll(".gallery > *"))
+    const originalSlides = Array.from(wrapper.querySelectorAll(".gallery > *:not(.is-clone)"))
+    // Remove any existing clones (e.g., from a cloneNode operation)
+    wrapper.querySelectorAll(".gallery > .is-clone").forEach(el => el.remove())
     const navigation = wrapper.querySelector(".gallery-navigation")
-    const bulletsWrapper = wrapper.querySelector(".bullets")
+    const bulletsWrapper = wrapper.querySelector(".loop-gallery-bullets")
 
     if (!gallery || originalSlides.length === 0 || !bulletsWrapper) return
 
@@ -20,6 +22,8 @@ function initGallery(wrapper) {
 
     const firstClone = originalSlides[0].cloneNode(true)
     const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true)
+    firstClone.classList.add("is-clone")
+    lastClone.classList.add("is-clone")
     gallery.prepend(lastClone)
     gallery.appendChild(firstClone)
 
