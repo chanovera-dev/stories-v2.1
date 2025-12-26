@@ -462,23 +462,14 @@ body {
 .btn-pagination,
 .post-body__header .wp-post-image,
 .post-video-wrapper video,
-.attachment-full.size-full.wp-post-image {
+.attachment-full.size-full.wp-post-image,
+.post--author {
     border-radius: 1rem;
 }
 
 .main-navigation .glass-backdrop,
 .main-navigation>.menu {
     border-radius: 13px;
-}
-
-.main-navigation {
-    & .menu {
-        & li {
-            &.item-has-children {
-                & .sub-menu {}
-            }
-        }
-    }
 }
 
 .post-tag,
@@ -539,7 +530,8 @@ body.is-chromium {
     .btn-pagination,
     .post-body__header .wp-post-image,
     .post-video-wrapper video,
-    .attachment-full.size-full.wp-post-image {
+    .attachment-full.size-full.wp-post-image,
+    .post--author {
         border-radius: 2rem;
         corner-shape: squircle;
     }
@@ -548,16 +540,6 @@ body.is-chromium {
     .main-navigation>.menu {
         border-radius: 22px;
         corner-shape: squircle;
-    }
-
-    .main-navigation {
-        & .menu {
-            & li {
-                &.item-has-children {
-                    & .sub-menu {}
-                }
-            }
-        }
     }
 
     .post-tag,

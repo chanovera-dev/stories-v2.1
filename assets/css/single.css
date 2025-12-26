@@ -4,6 +4,9 @@
     }
 
     & .post--author {
+        border: 1px solid var(--wp--preset--color--accent-6);
+        padding: 1.5rem;
+
         & .author-name {
             margin-bottom: .6rem;
         }
