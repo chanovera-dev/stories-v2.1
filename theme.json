@@ -29,7 +29,7 @@
 					"slug": "base-alpha-50-night"
 				},
 				{
-					"color": "#404954",
+					"color": "#28316c",
 					"name": "Contrast",
 					"slug": "contrast"
 				},
@@ -69,22 +69,22 @@
 					"slug": "primary-alpha-50-night"
 				},
 				{
-					"color": "#d2d6d2",
+					"color": "#deeafc",
 					"name": "Secondary",
 					"slug": "secondary"
 				},
 				{
-					"color": "#d2d6d280",
+					"color": "#deeafc80",
 					"name": "Secondary Alpha 50",
 					"slug": "secondary-alpha-50"
 				},
 				{
-					"color": "#eaeeea",
+					"color": "#F8FAFC",
 					"name": "Tertiary",
 					"slug": "tertiary"
 				},
 				{
-					"color": "#eaeeea80",
+					"color": "#F8FAFC80",
 					"name": "Tertiary Alpha 50",
 					"slug": "tertiary-alpha-50"
 				},
@@ -159,7 +159,7 @@
 					"slug": "accent-7"
 				},
 				{
-					"color": "#f5f7f5",
+					"color": "#ffffff",
 					"name": "Background",
 					"slug": "background"
 				},
@@ -179,7 +179,7 @@
 					"slug": "focus-alpha-50"
 				},
 				{
-					"color": "#99BD9B",
+					"color": "#28316c",
 					"name": "Button",
 					"slug": "button"
 				},

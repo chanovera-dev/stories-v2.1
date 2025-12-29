@@ -6,6 +6,12 @@ body:has(#wpadminbar) {
             top: var(--heigh-wp-adminbar);
         }
     }
+
+    & .site-main {
+        section#hero.block {
+            height: calc(100dvh - 88px - var(--heigh-wp-adminbar));
+        }
+    }
 }
 
 @media (width <=600px) {

@@ -24,6 +24,7 @@ textarea:-webkit-autofill {
 }
 
 label:not([for="wp-comment-cookies-consent"]) {
+    width: 100%;
     margin-bottom: .25rem;
     display: inline-block;
     font-size: var(--wp--preset--font-size--small);
@@ -73,6 +74,38 @@ textarea {
     height: 6rem;
 }
 
+select {
+    background-image: url('../../assets/icons/select-image.svg');
+    background-repeat: no-repeat;
+    background-size: 5px 10px;
+    background-position: right .75rem center;
+    padding-right: calc(.75rem * 2 + 5px);
+}
+
+.wpcf7-form-control-wrap {
+    display: block;
+    margin-top: .2rem;
+}
+
+.wpcf7-form {
+    display: grid;
+    gap: 1rem;
+}
+
+.wpcf7-list-item {
+    margin: 0;
+}
+
+.wpcf7-form-control.wpcf7-submit.has-spinner {
+    width: 100%;
+}
+
+/*
+ * =========================================================================
+ * BUTTONS
+ * =========================================================================
+ */
+
 .btn,
 #submit,
 .wpcf7-submit,
@@ -87,7 +120,7 @@ textarea {
     padding: .5rem 1rem;
     background-color: light-dark(var(--wp--preset--color--button), var(--wp--preset--color--button-night));
     border: 1px solid light-dark(var(--wp--preset--color--button), var(--wp--preset--color--button-night));
-    color: light-dark(var(--wp--preset--color--contrast), var(--wp--preset--color--base));
+    color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base));
     transition: all .3s ease;
     background-image: linear-gradient(-60deg, transparent, transparent 40%, #ffffff44 40%, #ffffff44 60%, transparent 60%, transparent 100%);
     background-size: 200% 100%;
@@ -119,7 +152,7 @@ textarea {
     &.primary {
         background-color: light-dark(var(--wp--preset--color--button), var(--wp--preset--color--button-night));
         border-color: light-dark(var(--wp--preset--color--button), var(--wp--preset--color--button-night));
-        color: light-dark(var(--wp--preset--color--contrast), var(--wp--preset--color--base));
+        color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base));
     }
 
     &.secondary {
@@ -137,6 +170,7 @@ textarea {
         background-color: transparent;
         border-color: transparent;
         color: var(--wp--preset--color--contrast);
+        background-image: none;
 
         &:hover {
             background-color: transparent;
