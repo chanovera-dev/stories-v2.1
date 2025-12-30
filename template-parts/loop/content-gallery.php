@@ -22,6 +22,10 @@
             <div class="gallery-wrapper">
                 <div class="gallery" style="display: flex;">
                     <?php
+                    if (!function_exists('stories_extract_gallery_images')) {
+                        require_once get_template_directory() . '/templates/helpers/extract-gallery-images.php';
+                    }
+
                     if (function_exists('stories_extract_gallery_images')) {
 
                         $ids = stories_extract_gallery_images(get_the_ID());

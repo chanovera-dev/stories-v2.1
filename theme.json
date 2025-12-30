@@ -109,7 +109,7 @@
 					"slug": "tertiary-alpha-50-night"
 				},
 				{
-					"color": "#B2D6B5",
+					"color": "#a9caff",
 					"name": "Bullet",
 					"slug": "bullet"
 				},
@@ -119,7 +119,7 @@
 					"slug": "bullet-night"
 				},
 				{
-					"color": "#87AB89",
+					"color": "#050170",
 					"name": "Bullet Active",
 					"slug": "bullet-active"
 				},

@@ -15,6 +15,7 @@ body {
     }
 }
 
+.type-special:not(:has(.breadcrumbs--wrapper)),
 .post:not(:has(.breadcrumbs--wrapper)) {
     position: relative;
     opacity: 0;
@@ -220,6 +221,20 @@ body {
     }
 }
 
+.type-special:not(:has(.breadcrumbs--wrapper)) {
+    & .post-body {
+        background-color: light-dark(var(--wp--preset--color--base-alpha-50), var(--wp--preset--color--base-alpha-50-night));
+        backdrop-filter: blur(5px);
+        box-shadow: rgba(40, 49, 108, 0.1) 0px 8px 24px;
+        transition: transform .3s ease;
+
+        &:hover {
+            transform: scale(1.1);
+            box-shadow: rgba(40, 49, 108, 0.1) 0px 8px 24px;
+        }
+    }
+}
+
 & .testimony {
     opacity: 0;
     transform: translateY(60px);
@@ -231,9 +246,10 @@ body {
         border: 1px solid var(--wp--preset--color--accent-6);
         padding: 1rem;
         background-color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
+        box-shadow: rgba(40, 49, 108, 0.1) 0px 8px 24px;
 
         &.blue {
-            background-color: var(--wp--preset--color--footer-background);
+            background-color: var(--wp--preset--color--contrast);
             color: var(--wp--preset--color--base);
         }
 
@@ -289,6 +305,7 @@ body {
             width: min(100%, 1000px);
             display: grid;
             grid-template-columns: 1fr auto;
+            overflow: hidden;
 
             & .stars {
                 grid-column: 1 / -1;
@@ -310,6 +327,19 @@ body {
                 border-left: 1px solid var(--wp--preset--color--accent-6);
                 grid-column: 2 / 3;
                 padding-left: 1.5rem;
+                position: relative;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    bottom: 0;
+                    right: 0;
+                    width: 100px;
+                    height: 100px;
+                    background-color: var(--wp--preset--color--bullet);
+                    border-radius: 50%;
+                    filter: blur(70px);
+                }
 
                 & h3 {
                     margin-bottom: 1rem;
@@ -318,6 +348,7 @@ body {
                 & ul {
                     list-style: none;
                     padding-left: 0;
+                    position: relative;
 
                     & li {
                         display: flex;
@@ -328,7 +359,7 @@ body {
 
                         & span:nth-child(2) {
                             font-weight: 500;
-                            color: light-dark(var(--wp--preset--color--primary), var(--wp--preset--color--primary));
+                            color: light-dark(var(--wp--preset--color--bullet), var(--wp--preset--color--bullet-night));
                         }
                     }
                 }
