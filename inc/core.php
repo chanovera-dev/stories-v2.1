@@ -641,6 +641,23 @@ add_action('customize_register', 'stories_customize_register');
 
 /*
  * =========================================================================
+ * CUSTOM POST TYPE ARCHIVE
+ * =========================================================================
+ */
+
+/**
+ * Filter to ensure the 'special' custom post type has an archive enabled.
+ * This makes get_post_type_archive_link('special') work correctly.
+ */
+add_filter('register_post_type_args', function ($args, $post_type) {
+    if ($post_type === 'special') {
+        $args['has_archive'] = true;
+    }
+    return $args;
+}, 10, 2);
+
+/*
+ * =========================================================================
  * BLOCK FILTERS & CUSTOM RENDER
  * =========================================================================
  */

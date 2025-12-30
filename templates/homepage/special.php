@@ -49,10 +49,10 @@
         </div>
     </div>
     <div class="content permalink">
-        <button onclick="window.location.href='<?php echo get_post_type_archive_link('special'); ?>'"
-            class="btn primary go-to-blog" aria-label="Link to go special posts page">
+        <a href="<?php echo esc_url(get_post_type_archive_link('special')); ?>" class="btn primary go-to-blog"
+            aria-label="Link to go special posts page">
             Ver todos los artículos
             <?= stories_get_icon('forward'); ?>
-        </button>
+        </a>
     </div>
 </section>
