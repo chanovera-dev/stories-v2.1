@@ -5,7 +5,7 @@
             <source type="video/mp4"
                 src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/video/thunder-storm.mp4">
         </video>
-        <div class="text">
+        <div class="crisis--text">
             <h2 class="title-section">Una crisis no espera</h2>
             <h3 class="subtitle-section">El silencio tampoco</h3>
             <p>Las crisis de reputación pueden surgir por errores internos, ataques externos, filtraciones,
