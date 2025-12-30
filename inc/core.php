@@ -969,7 +969,7 @@ function stories_has_related_posts($post_id = null)
  */
 function posts_styles()
 {
-    if (is_home() or is_archive() or is_search()) {
+    if (is_home() or is_archive() or is_search() || is_page_template('archive-special.php')) {
         $a = stories_get_assets();
 
         global $wp_query;
