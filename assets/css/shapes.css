@@ -21,9 +21,11 @@ body {
     opacity: 0;
     transform: translateY(4rem);
     padding: .1rem;
+    transition: opacity .3s ease, transform .3s ease;
 
     &.animate-in {
-        animation: animate-in--post .3s ease-in-out forwards;
+        opacity: 1;
+        transform: translateY(0);
     }
 
     & .post-body {
@@ -569,18 +571,6 @@ body {
     backdrop-filter: blur(1rem);
 }
 
-@keyframes animate-in--post {
-    from {
-        opacity: 0;
-        transform: translateY(4rem);
-    }
-
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
 /*
  * =========================================================================
  * ROUNDED
@@ -622,7 +612,7 @@ body {
 #crisis .content video,
 .content.metodology .container .card,
 .content.services .card,
-.data .card,
+.how-works--data .card,
 .cases .card,
 .testimony .card {
     border-radius: 1rem;
@@ -700,7 +690,7 @@ body.is-chromium {
     #crisis .content video,
     .content.metodology .container .card,
     .content.services .card,
-    .data .card,
+    .how-works--data .card,
     .cases .card,
     .testimony .card {
         border-radius: 2rem;
