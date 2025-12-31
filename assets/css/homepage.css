@@ -3,7 +3,7 @@
         background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
     }
 
-    :is(#crisis, #privacy, #why-us, #testimonies, #blog) {
+    :is(#crisis, #privacy, #why-us, #testimonies, #blog, #faq) {
         background-color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
     }
 
@@ -188,8 +188,8 @@
                     }
 
                     & .green {
-                        --emphasis-color: green;
-                        --emphasis-color-light: #00ff003f;
+                        --emphasis-color: #008000;
+                        --emphasis-color-light: #dcfce7;
                     }
 
                     & .card {
@@ -352,8 +352,8 @@
                 }
 
                 & .green {
-                    --emphasis-color: green;
-                    --emphasis-color-light: #00ff003f;
+                    --emphasis-color: #008000;
+                    --emphasis-color-light: #dcfce7;
                 }
 
                 & .card {
@@ -750,6 +750,68 @@
                 &>div {
                     padding: 2rem 1rem;
                 }
+            }
+        }
+    }
+}
+
+#faq {
+    & .faq-container {
+        max-width: 900px;
+    }
+
+    & .faq-item {
+        background-color: light-dark(var(--wp--preset--color--base), var(--wp--preset--color--base-night));
+        transition: all 0.3s ease;
+
+        &.active {
+            & .faq-question {
+                & svg {
+                    transform: rotate(180deg);
+                }
+            }
+
+            & .faq-answer {
+                grid-template-rows: 1fr;
+                opacity: 1;
+            }
+        }
+    }
+
+    & .faq-question {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1.5rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: var(--wp--preset--font-size--medium);
+        font-weight: 600;
+        font-family: var(--wp-preset--font-family--manrope);
+        color: light-dark(var(--wp--preset--color--black), var(--wp--preset--color--white));
+
+        & svg {
+            transition: transform 0.3s ease;
+            fill: currentColor;
+        }
+    }
+
+    & .faq-answer {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.3s ease, opacity 0.3s ease;
+        opacity: 0;
+
+        & .faq-answer-content {
+            overflow: hidden;
+
+            & p {
+                padding: 0 1.5rem 1.5rem;
+                margin: 0;
+                line-height: 1.6;
+                opacity: 0.75;
             }
         }
     }

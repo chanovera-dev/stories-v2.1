@@ -28,6 +28,7 @@ get_header(); ?>
         'contact',
         'blog' => !empty(get_posts(['post_type' => 'post', 'posts_per_page' => 1])),
         'special' => !empty(get_posts(['post_type' => 'special', 'posts_per_page' => 1])),
+        'faq',
     ];
 
     foreach ($sections as $section => $condition) {
