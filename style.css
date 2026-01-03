@@ -377,7 +377,6 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 margin-left: auto;
                 position: relative;
                 z-index: 5;
-                backdrop-filter: blur(2rem);
 
                 & .icon--wrapper {
                     position: relative;
@@ -429,6 +428,8 @@ Tags: blog, fondo-personalizado, colores-personalizados, logotipo-personalizado,
                 }
 
                 &.active {
+                    backdrop-filter: blur(2rem);
+
                     & .icon--wrapper {
                         &::before {
                             max-width: 16px;
