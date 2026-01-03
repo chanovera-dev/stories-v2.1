@@ -50,7 +50,7 @@ function setup_stories()
     add_theme_support('customize-selective-refresh-widgets');
     add_theme_support('wp-block-styles');
     add_theme_support('align-wide');
-    add_theme_support('post-thumbnails', ['post', 'page']);
+    add_theme_support('post-thumbnails', ['post', 'page', 'special']);
     set_post_thumbnail_size(350, 200, true);
     add_image_size('loop-thumbnail', 400, 400, true);
 }
