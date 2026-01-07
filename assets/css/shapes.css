@@ -33,7 +33,7 @@ body {
         transition: box-shadow .3s ease;
 
         &:hover {
-            box-shadow: 0 0 0 1px var(--wp--preset--color--button);
+            box-shadow: 0 0 0 2px var(--wp--preset--color--button);
         }
 
         & .post-body__header {
