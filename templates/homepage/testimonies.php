@@ -112,11 +112,11 @@
                 </blockquote>
             </div>
             <div class="navigation">
-                <button id="testimonies--backward-button"
-                    class="testimonies-prev btn-pagination small-pagination"><?= stories_get_icon('backward'); ?></button>
+                <button id="testimonies--backward-button" class="testimonies-prev btn-pagination small-pagination"
+                    aria-label="<?= __('Anterior', 'stories'); ?>"><?= stories_get_icon('backward'); ?></button>
                 <div class="testimonies-bullets"></div>
-                <button id="testimonies--forward-button"
-                    class="testimonies-next btn-pagination small-pagination"><?= stories_get_icon('forward'); ?></button>
+                <button id="testimonies--forward-button" class="testimonies-next btn-pagination small-pagination"
+                    aria-label="<?= __('Siguiente', 'stories'); ?>"><?= stories_get_icon('forward'); ?></button>
             </div>
         </div>
     </div>

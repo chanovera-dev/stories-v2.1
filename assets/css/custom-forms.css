@@ -80,6 +80,7 @@ select {
     background-size: 5px 10px;
     background-position: right .75rem center;
     padding-right: calc(.75rem * 2 + 5px);
+    appearance: none;
 }
 
 .wpcf7-form-control-wrap {
