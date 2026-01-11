@@ -1,6 +1,6 @@
 <?php
 /**
- * Template Name: Homepage
+ * Template Name: HomepageCE
  *
  * Página principal enfocada en servicios de Gestión de Crisis, Reputación Digital y Defensa Estratégica.
  * Incluye secciones de metodología, servicios especializados, casos de estudio y protocolos de privacidad.
@@ -13,7 +13,7 @@ get_header(); ?>
 
 <main id="main" class="site-main" role="main">
     <?php
-    $directory = get_template_directory() . '/templates/homepage';
+    $directory = get_template_directory() . '/templates/homepageCE';
 
     $sections = [
         'hero',
