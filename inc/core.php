@@ -933,24 +933,8 @@ function stories_has_related_posts($post_id = null)
  */
 function posts_styles()
 {
-    if (is_home() or is_archive() or is_search()) {
+    if (is_home() || is_archive() || is_search() /*/|| is_post_type_archive('cpt')*/) {
         $a = stories_get_assets();
-
-        global $wp_query;
-
-        $has_gallery = false;
-
-        foreach ($wp_query->posts as $post) {
-            if (has_block('core/gallery', $post) || has_shortcode($post->post_content, 'gallery')) {
-                $has_gallery = true;
-                break;
-            }
-        }
-
-        if ($has_gallery) {
-            require_once get_template_directory() . '/templates/helpers/extract-gallery-images.php';
-            stories_enqueue_script('loop-gallery', $a['js']['loop-gallery']);
-        }
 
         stories_enqueue_style('breadcrumbs', $a['css']['breadcrumbs']);
         stories_enqueue_style('posts-styles', $a['css']['posts-styles']);
@@ -1032,3 +1016,34 @@ function page404_styles()
     }
 }
 add_action('wp_enqueue_scripts', 'page404_styles');
+
+/*
+ * =========================================================================
+ * CUSTOM POST TYPE ARCHIVE
+ * =========================================================================
+ */
+
+/**
+ * Filter to ensure the 'nsfw' custom post type has an archive enabled.
+ * This makes archive-nsfw.php work automatically.
+ */
+// add_filter('register_post_type_args', function ($args, $post_type) {
+//     if ($post_type === 'cpt') {
+//         $args['has_archive'] = 'cpt'; // Enable archive at /cpt/
+//         $args['rewrite'] = array('slug' => 'cpt');
+//     }
+//     return $args;
+// }, 10, 2);
+
+/**
+ * Configure the main query for the 'cpt' archive.
+ * This ensures pagination works correctly and filters the main loop.
+ */
+// function stories_cpt_archive_query($query)
+// {
+//     if (!is_admin() && $query->is_main_query() && is_post_type_archive('cpt')) {
+//         $query->set('post_type', 'cpt');
+//         $query->set('post_status', 'publish');
+//     }
+// }
+// add_action('pre_get_posts', 'stories_cpt_archive_query');
