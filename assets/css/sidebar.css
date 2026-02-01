@@ -473,7 +473,7 @@
     .site-main {
         & .block {
             & .content:has(aside) {
-                gap: 1.5rem !important;
+                gap: 3rem !important;
                 grid-template-columns: 1fr clamp(306.67px, 280px + 2.6vw, 317.5px);
             }
         }

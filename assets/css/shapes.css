@@ -33,7 +33,7 @@ body {
         transition: box-shadow .3s ease;
 
         &:hover {
-            box-shadow: 0 0 0 1px var(--wp--preset--color--button);
+            box-shadow: 0 0 0 2px var(--wp--preset--color--button);
         }
 
         & .post-body__header {
@@ -67,6 +67,25 @@ body {
             & .gallery-wrapper {
                 background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
                 box-shadow: inset 0 0 7px light-dark(var(--wp--preset--color--primary-alpha-50), var(--wp--preset--color--primary-alpha-50-night));
+            }
+
+            & .post-audio-wrapper {
+                position: relative;
+                overflow: hidden;
+                height: 46px;
+                background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
+
+                & audio {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    width: 100%;
+
+                    &::-webkit-media-controls-panel {
+                        background-color: light-dark(var(--wp--preset--color--tertiary), var(--wp--preset--color--tertiary-night));
+                    }
+                }
             }
 
             & .post--permalink {
@@ -580,7 +599,8 @@ body {
 .btn-pagination,
 .post-body__header .wp-post-image,
 .post-video-wrapper video,
-.attachment-full.size-full.wp-post-image {
+.attachment-full.size-full.wp-post-image,
+.post-audio-wrapper {
     border-radius: 1rem;
 }
 
@@ -675,7 +695,8 @@ body.is-chromium {
     .btn-pagination,
     .post-body__header .wp-post-image,
     .post-video-wrapper video,
-    .attachment-full.size-full.wp-post-image {
+    .attachment-full.size-full.wp-post-image,
+    .post-audio-wrapper {
         border-radius: 2rem;
         corner-shape: squircle;
     }
